@@ -1,0 +1,2 @@
+enum Numbers1 { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN };
+enum Numbers2 { ONE, TWO, THREE, FOUR, FIVE };

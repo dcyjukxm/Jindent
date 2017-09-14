@@ -1,0 +1,27 @@
+
+public class SQLJExample {
+
+	public void method() {
+		
+		TutMod_Cursor cur;
+      Integer id = new  Integer ( 0 );
+
+      #sql cur = { SELECT * FROM staff WHERE id >= 310 };
+
+		System.out.println("...");
+
+      Integer years = new  Integer ( 0 );
+      Integer dept = new  Integer ( 0 );
+      String name = null;
+      String job = null;
+      Double salary = new  Double ( 0.0 );
+      Double comm = new  Double ( 0.0 );
+
+      #sql { FETCH :cur INTO :id, :name, :dept, :job, :years,
+                             :salary, :comm };
+                            
+		System.out.println("...");
+		
+		// ...
+	}
+}

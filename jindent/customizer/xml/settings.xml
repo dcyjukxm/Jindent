@@ -1,0 +1,3350 @@
+<?xml version="1.0"?>
+
+<customizerdata name="Jindent">
+
+	<!-- Registration -->
+
+	<node name="Registration" version="1.0" prefix="registration">
+		<tab name="License Key Registration">
+   	   		<label>Installed license keys</label>
+   	   		<element name="registration" type="registration" desc="License key registration"/>
+   	   	</tab>
+	</node>
+	
+	<!-- General -->
+
+	<node name="General" version="1.0" prefix="general">
+
+	   <topic name="Messages &amp; Warnings">
+
+	      <tab name="Report Of Messages &amp; Warnings">
+	         <label>Report of parser events</label>
+	         <setting name="parserMessages" type="messageReport" desc="Parser messages"/>
+
+	         <blankline/>	
+	         <label>Report of formatter events</label>
+	         <setting name="formatterMessages" type="messageReport" desc="Formatter messages"/>
+
+	         <blankline/>	
+	         <label>Report of javadoc events</label>
+	         <setting name="javaDocMessages" type="messageReport" desc="JavaDoc messages"/>
+
+	         <blankline/>	
+	         <label>Verbose mode</label>
+	         <setting name="reportEveryFileAccess" type="boolean" desc="Report every file access"/>
+	         
+	         <blankline/>	
+	         <label>Logging</label>
+	         <setting name="logFile" type="logfile" desc="Log file"/>
+	      </tab>
+	   </topic>	
+
+	   <topic name="File Extension Manager">
+
+	      <tab name="File Extension Manager">
+	         <label>File extension manager</label>
+	         <setting name="extensionManager" type="extensionManager" desc="Extension manager"/>
+	      </tab>
+		</topic>	
+
+	   <topic name="Info">
+
+	      <tab name="Info">
+	         <element name="about" desc="About" type="about"/>
+	      </tab>
+		</topic>	
+	</node>
+
+	<!-- Environment -->
+	
+	<node name="Environment" version="1.0" prefix="environment">
+	
+	   <topic name="Environment Variables">
+	
+	      <tab>
+	         <label>Settings of special variables</label>
+	         <setting name="conventionName" type="string" desc="Convention name"/>
+	         <setting name="dateFormat" type="date" desc="Date format"/>
+	      </tab>
+
+		  <node name="User Defined Variables">
+		      <tab>
+		         <label>Settings of user defined variables</label>
+		         <setting name="userVariables" type="userVariables" desc="User defined variables"/>
+		      </tab>
+		  </node>
+
+		  <node name="System Variables">
+		      <tab>
+		         <label>Settings of system variables</label>
+		     	 <setting name="systemVariables" type="systemVariables" desc="System variables"/>
+		      </tab>
+		  </node>
+	
+	   </topic>
+	
+	</node>
+
+	<!-- IDE specific settings -->
+	
+	<node name="IDE Integrations" version="1.0" prefix="ide">
+	
+	   <topic name="Eclipse">
+	
+	      <tab name="Invoke Jindent On Eclipse Events">
+	         <label>Format on Open event</label>
+	         <setting name="eclipse.formatEditorFileAfterOpen" type="boolean" desc="Automatic format source files after opening in editor"/>
+	         <blankline/>
+	         <label>Format on Save event</label>
+<text>To enable formatting of source code on editor's save events Jindent now ships with
+its own 'format on save' action which can be easily enabled:\n
+Please navigate to your Eclipse's preferences to 'Java -> Editor -> Save Actions' 
+and check 'additional actions'.
+Click on button 'Configure...' to navigate to the tabulators of each available 
+'format on save' action. Now choose tab 'Jindent - Source Code Formatter' and enable 
+the check box 'Format with Jindent'.\n
+Now Jindent will be automatically invoked on all Java editor's 'format on save' events.</text>
+		</tab>
+	   </topic>
+
+	   <topic name="Netbeans">
+	
+	      <tab name="Invoke Jindent On Netbeans Events">
+	         <label>Editor Events</label>
+	         <setting name="netbeans.formatEditorFileBeforeSave" type="boolean" desc="Automatic format source files before saving editor content"/>
+	      </tab>
+	   </topic>
+
+	   <topic name="IntelliJ IDEA">
+	
+	      <tab name="Invoke Jindent On IntelliJ IDEA Events">
+	         <label>Editor Events</label>
+	         <setting name="intellijidea.formatEditorFileBeforeSave" type="boolean" desc="Automatic format source files before saving editor content"/>
+	      </tab>
+	   </topic>
+	
+	</node>
+
+	<node name="Formatter">
+
+		<!-- Java Language -->
+		
+		<node name="Java" version="4.0.0" prefix="java">
+
+		   <node name="Text Encoding">
+	      	 <tab>
+		         <label>Input</label>
+		         <setting name="inputTabulatorSize" type="nznumber" desc="Tabulator size of input source code"/>
+		         <setting name="inputEncoding" type="encoding" desc="Input encoding"/>
+		         
+		         <blankline/>
+		         
+		         <label>Output</label>
+		         <setting name="outputEndOfLineFormat" type="endOfLineFormat" desc="End of line output format"/>
+		         <setting name="outputEncoding" type="encoding" desc="Output encoding"/>
+	         </tab>
+		   </node>
+
+			<!-- Indentation -->
+
+		   <topic name="Indentation">
+		
+		      <tab preview="Indentation-General.java" 
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>General indentations</label>
+		
+		         <setting name="tabulatorSize" type="nznumber" desc="Tabulator stop size"/>
+		         <setting name="firstLevelIndent" type="number" desc="First level indentation size"/>
+		         <setting name="indentSize" type="number" desc="General indentation size"/>
+		         <setting name="indentLeadingsByTabs" type="boolean" desc="Indent leading code by tab stops"/>
+		
+		      </tab>
+		
+			  <node name="Labels">
+			      <tab preview="Indentation-Label.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Indentation of labels</label>
+			
+			         <setting name="indentLabels" type="boolean" desc="Indent labels"/>
+			
+			         <blankline/>
+			         <label>Separation of labels</label>
+			         <setting name="labelNewLine" type="boolean" desc="Labels on new lines"/>
+			
+			      </tab>
+			  </node>
+		
+			  <node name="Switch-Case">
+			      <tab preview="Indentation-SwitchCase.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Switch-Case indentation</label>
+			
+			         <setting name="indentCaseFromSwitch" type="number" desc="Indent case from switch"/>
+			         <setting name="indentBlockFromCase" type="number" desc="Indent block { ... } from case"/>
+			
+			      </tab>
+			  </node>
+		
+		   </topic>
+		   
+		   <!-- Braces Style -->
+
+		   <topic name="Braces Style">
+		
+			  <node name="Class/Interface/Annotation Type">
+			      <tab preview="BracesStyle-Classes.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="classInterfaceBraceStyle" type="braces" desc="Brace style for Class/interface/annotation declarations"/>
+			      </tab>
+			  </node>
+			  <node name="Constructor/Method">
+			      <tab preview="BracesStyle-Methods.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="methodConstructorBraceStyle" type="braces" desc="Brace style for constructor/method declarations"/>
+			      </tab>
+			  </node>
+			  <node name="Lambda">
+			      <tab preview="BracesStyle-Lambda.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="lambdaBraceStyle" type="braces" desc="Brace style for lambda blocks"/>
+			      </tab>
+			  </node>
+			  <node name="If-Else">
+			      <tab preview="BracesStyle-IfElse.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="ifElseBraceStyle" type="braces" desc="Brace style for if-else statements"/>
+			      </tab>
+			  </node>
+			  <node name="Do-While/While/For">
+			      <tab preview="BracesStyle-Loop.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="loopBraceStyle" type="braces" desc="Brace style for loop statements"/>
+			      </tab>
+			  </node>
+			  <node name="Switch-Case">
+			      <tab preview="BracesStyle-SwitchCase.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="switchCaseBraceStyle" type="braces" desc="Brace style for switch case statements"/>
+			      </tab>
+			  </node>
+			  <node name="Block/Initializer">
+			      <tab preview="BracesStyle-Block.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="blockBraceStyle" type="braces" desc="Brace style for blocks and initializers"/>/>
+			      </tab>
+			  </node>
+			  <node name="Enum">
+			      <tab preview="BracesStyle-Enums.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="enumBraceStyle" type="braces" desc="Brace style for enumeration declarations"/>
+			      </tab>
+			  </node>
+			  <node name="Try/Catch">
+			      <tab preview="BracesStyle-TryCatch.java" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			           
+			         <setting name="tryCatchBraceStyle" type="braces" desc="Brace style for try-catch statements"/>		
+			      </tab>
+			  </node>		
+		   </topic>
+
+			<!-- Braces/Parentheses Insertion -->
+		
+		   <topic name="Braces/Parentheses Insertion">
+		
+		      <tab preview="BracesInsertion.java"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Insert braces { } at ...</label>
+		
+		         <setting name="insertBracesIntoForStatements" type="boolean" desc="For statements"/>
+		         <setting name="insertBracesIntoWhileStatements" type="boolean" desc="While statements"/>
+		         <setting name="insertBracesIntoDoWhileStatements" type="boolean" desc="Do-while statements"/>
+		         <setting name="insertBracesIntoIfElseStatements" type="boolean" desc="If-else statements"/>
+		
+		         <blankline/>
+		         <label>Insert parentheses ( ) at ...</label>
+		
+		         <setting name="insertParenthesesIntoConditions" type="boolean" desc="Conditions"/>
+		
+		      </tab>
+		
+		   </topic>
+		   
+		   <!-- If-Else Statements -->
+
+		   <topic name="If-Else Statements">
+		
+		      <tab preview="IfElse.java"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of if-else statements</label>
+		
+		         <setting name="singleIfStatementInOneLine" type="boolean" desc="Single if statement in one line"/>
+		         <setting name="singleElseStatementInOneLine" type="boolean" desc="Single else statement in one line"/>
+		         <setting name="specialElseIfTreatment" type="boolean" desc="Treat else and if as one else/if statement"/>
+		
+		      </tab>
+		
+		   </topic>
+		
+			<!-- Empty Statements/Declarations -->
+		
+		   <topic name="Empty Statements/Declarations">
+		
+		      <tab preview="EmptyStatements.java"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of empty statements and declarations</label>
+		
+		         <setting name="emptyStatementsDeclarationsOnNewLine" type="boolean" desc="Put empty statements and declarations on new line"/>
+		
+		      </tab>
+		
+		   </topic>
+		   
+		   <!-- White Spaces -->
+
+		   <topic name="White Spaces">
+		   		<node name="Parentheses">
+		      		<tab>
+				     	<setting name="combinePaddingParentheses" type="boolean" desc="Combine padding parentheses to prevent white spaces"/>
+				    </tab>
+					<node name="Constructors/Methods">
+				         <tab preview="Whitespaces-Parentheses-ConstructorsMethods.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+				           		
+				           	 <label>White spaces of parentheses ( ... ) </label>
+			         		 <setting name="spaceBeforeMethodConstructorDeclarationParentheses" type="boolean" desc="Space before left parentheses of constructor and method declarations"/>
+				             <setting name="spaceBeforeMethodConstructorCallParentheses" type="boolean" desc="Space before left parentheses of constructor and method calls"/>
+					         <setting name="paddingMethodConstructorDeclarationParentheses" type="boolean" desc="Padding parentheses of constructor and method declarations"/>
+					         <setting name="paddingMethodConstructorCallParentheses" type="boolean" desc="Padding parentheses of constructor and method calls"/>
+					         <setting name="noPaddingOfEmptyParentheses" type="boolean" desc="No padding of empty parentheses"/>
+					     </tab>
+					</node>
+					<node name="Expressions">
+				         <tab preview="Whitespaces-Parentheses-Expressions.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+				           	 <label>White spaces of parentheses ( ... ) </label>
+					         <setting name="paddingExpressionParentheses" type="boolean"  desc="Padding expression parentheses"/>
+						</tab>
+					</node>
+					<node name="Annotations">
+				        <tab preview="Whitespaces-Parentheses-Annotations.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+				           	<label>White spaces of parentheses ( ... ) </label>
+			         		<setting name="spaceBeforeAnnotationTypeMemberParentheses" type="boolean" desc="Space before left parentheses of annotation type member declarations"/>
+			         		<setting name="spaceBeforeSingleMemberAnnotationParentheses" type="boolean" desc="Space before left parentheses of single-member annotations"/>
+				         	<setting name="paddingSingleMemberAnnotationParentheses" type="boolean" desc="Padding parentheses of single-member annotations"/>
+			         		<setting name="spaceBeforeNormalAnnotationParentheses" type="boolean" desc="Space before left parentheses of normal annotations"/>
+				         	<setting name="paddingNormalAnnotationParentheses" type="boolean" desc="Padding parentheses of normal annotations"/>
+						</tab>
+					</node>
+					<node name="Statements">
+				        <tab preview="Whitespaces-Parentheses-Statements.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				             <label>White spaces of parentheses ( ... ) </label>
+					         <setting name="spaceBeforeForParentheses" type="boolean" desc="Space before left parentheses of for statements"/>
+					         <setting name="paddingForParentheses" type="boolean" desc="Padding parentheses of for statements"/>
+					         <setting name="spaceBeforeIfParentheses" type="boolean" desc="Space before left parentheses of if statements"/>
+					         <setting name="paddingIfParentheses" type="boolean" desc="Padding parentheses of if statements"/>
+					         <setting name="spaceBeforeWhileParentheses" type="boolean" desc="Space before left parentheses of while statements"/>
+					         <setting name="paddingWhileParentheses" type="boolean" desc="Padding parentheses of while statements"/>
+					         <setting name="spaceBeforeTryParentheses" type="boolean" desc="Space before left parentheses of try statements"/>
+					         <setting name="paddingTryParentheses" type="boolean" desc="Padding parentheses of try statements"/>
+					         <setting name="spaceBeforeCatchParentheses" type="boolean" desc="Space before left parentheses of catch statements"/>
+					         <setting name="paddingCatchParentheses" type="boolean" desc="Padding parentheses of catch statements"/>
+					         <setting name="spaceBeforeSwitchParentheses" type="boolean" desc="Space before left parentheses of switch statements"/>
+					         <setting name="paddingSwitchParentheses" type="boolean" desc="Padding parentheses of switch statements"/>
+					         <setting name="spaceBeforeSynchronizedParentheses" type="boolean" desc="Space before left parentheses of synchronized statements"/>
+					         <setting name="paddingSynchronizedParentheses" type="boolean" desc="Padding parentheses of synchronized statements"/>			         
+					         <setting name="spaceBeforeThrowParentheses" type="boolean" desc="Space before left parentheses of throw statement"/>
+					         <setting name="spaceBeforeReturnParentheses" type="boolean" desc="Space before left parentheses of return statement"/>
+				         	 <setting name="spaceBeforeAssertParentheses" type="boolean" desc="Space before left parentheses of assert statement"/>
+						</tab>
+					</node>
+					<node name="Castings">
+				        <tab preview="Whitespaces-Parentheses-Castings.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+				
+				           	 <label>White spaces of parentheses ( ... ) </label>
+					         <setting name="paddingCastParentheses" type="boolean" desc="Padding parentheses of castings"/>
+				         	 <setting name="spaceAfterCastParentheses" type="boolean" desc="Space after right parentheses of castings"/>
+						</tab>
+					</node>
+					<node name="Enums"> 
+				        <tab preview="Whitespaces-Parentheses-Enums.java"
+				           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+							 
+				           	 <label>White spaces of parentheses ( ... ) </label>
+							 <setting name="spaceBeforeEnumConstantsParentheses" type="boolean" desc="Space before left parentheses of enum constants"/>
+					         <setting name="paddingEnumConstantsParentheses" type="boolean" desc="Padding parentheses of enum constants"/>
+						</tab>
+					</node>
+				</node>
+				<node name ="Brackets">
+		         	<tab preview="Whitespaces-Brackets.java"
+				           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of brackets [ ... ]</label>
+			         	<setting name="spaceBeforeBrackets" type="boolean" desc="Space before brackets"/>
+			         	<setting name="spaceBeforeBracketsInTypes" type="boolean" desc="Space before brackets in types"/>
+			         	<setting name="paddingBrackets" type="boolean" desc="Padding brackets"/>
+			         	<setting name="noPaddingOfEmptyBrackets" type="boolean" desc="No padding of empty brackets"/>	
+					</tab>
+				</node>
+				<node name="Braces">
+		         	<tab preview="Whitespaces-Braces.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of braces { ... }</label>
+			         	<setting name="paddingBracesOfInitializers" type="boolean" desc="Padding braces of initializers"/>
+			         	<setting name="noPaddingOfEmptyBracesInInitializers" type="boolean" desc="No padding of empty braces in initializers"/>
+			         	<setting name="spaceBeforeBracesOfArrayInitializers" type="boolean" desc="Space before left braces of array initializers"/>
+					</tab>
+				</node>
+				<node name="Operators">	
+		         	<tab preview="Whitespaces-Operators.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of operators</label>
+		           		
+			         	<setting name="paddingAssignmentOperators" type="boolean" desc="Padding assignment operators  = += -= /= *= ..."/>
+			         	<setting name="paddingConditionalOperators" type="boolean" desc="Padding conditional operators  &amp;&amp; ||"/>
+			         	<setting name="paddingEqualityOperators" type="boolean" desc="Padding equality operators  == !="/>
+			         	<setting name="paddingRelationalOperators" type="boolean" desc="Padding relational operators  &lt; &gt; &lt;= =&gt;"/>
+			         	<setting name="paddingAdditiveOperators" type="boolean" desc="Padding additive operators  + -"/>
+			         	<setting name="paddingMultiplicativeOperators" type="boolean" desc="Padding multiplicative operators  * / %"/>
+			         	<setting name="paddingBitwiseOperators" type="boolean" desc="Padding bitwise operators  &amp; | ^"/>
+			         	<setting name="paddingShiftOperators" type="boolean" desc="Padding shift operators  &lt;&lt; &gt;&gt; &gt;&gt;&gt;"/>
+			         	<setting name="spaceBeforeBangs" type="boolean" desc="Space before bangs !"/>
+			         	<setting name="spaceAfterBangs" type="boolean" desc="Space after bangs !"/>
+			         	<setting name="spaceBeforeBangsAfterAndOr" type="boolean" desc="Space before bangs ! appearing together with &amp;&amp; ||"/>
+			         	<setting name="spaceAfterBangsAfterAndOr" type="boolean" desc="Space after bangs ! appearing together with &amp;&amp; ||"/>
+			         	<setting name="spaceBeforeTildes" type="boolean" desc="Space before tildes ~"/>
+			         	<setting name="spaceAfterTildes" type="boolean" desc="Space after tildes ~"/>
+			         	<setting name="paddingExceptionMultiCatchOperators" type="boolean" desc="Padding of exception multicatch operators |"/>
+				 	</tab>
+				</node>
+				<node name="Generics">		
+		         	<tab preview="Whitespaces-Generics.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			        	<label>White spaces of &lt; ... &gt; in generics</label>
+			            <setting name="paddingBracesOfGenerics" type="boolean" desc="Padding braces of generics"/>
+			         	<setting name="noPaddingOfEmptyBracesOfGenerics" type="boolean" desc="No padding of empty braces of generics"/>	
+					</tab>
+				</node>
+				<node name="Commas">			
+					<tab preview="Whitespaces-Commas.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				     	<label>White spaces of commas ,</label>
+				        <setting name="spaceBeforeCommas" type="boolean" desc="Space before commas"/>
+				        <setting name="spaceAfterCommas" type="boolean" desc="Space after commas"/>
+				    </tab>
+				</node>
+				<node name="Ellipses">			
+					<tab preview="Whitespaces-Ellipses.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of ellipses ...</label>
+			         	<setting name="spaceBeforeEllipses" type="boolean" desc="Space before ellipses"/>
+			      	</tab>
+				</node>
+				<node name="Semicolons">					
+					<tab preview="Whitespaces-Semicolons.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of semicolons ;</label>
+			         	<setting name="spaceBeforeSemicolons" type="boolean" desc="Space before semicolons"/>
+		
+			         	<setting name="spaceBeforeForSemicolons" type="boolean" desc="Space before semicolons of for statements"/>
+			         	<setting name="spaceAfterForSemicolons" type="boolean" desc="Space after semicolons of for statements"/>
+			         	<setting name="noSpacesBetweenEmptyForSemicolons" type="boolean" desc="Do not insert spaces into empty for statements"/>
+			      	</tab>
+				</node>
+				<node name="Question Marks">					
+					<tab preview="Whitespaces-QuestionMarks.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of question marks ?</label>
+			         	<setting name="spaceBeforeTernaryHooks" type="boolean" desc="Space before question marks of ternary conditions"/>
+			         	<setting name="spaceAfterTernaryHooks" type="boolean" desc="Space after question marks of ternary conditions"/>
+			      	</tab>
+				</node>
+				<node name="Colons">								
+				  	<tab preview="Whitespaces-Colons.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>White spaces of colons :</label>
+		      	     	<setting name="spaceBeforeAssertColons" type="boolean" desc="Space before colons of assert statements"/>
+		   	      	 	<setting name="spaceAfterAssertColons" type="boolean" desc="Space after colons of assert statements"/>
+		
+				      	<setting name="spaceBeforeForColons" type="boolean" desc="Space before colons of for statements"/>
+			         	<setting name="spaceAfterForColons" type="boolean" desc="Space after colons of for statements"/>
+		
+			         	<setting name="spaceBeforeTernaryColons" type="boolean" desc="Space before colons of ternary conditions"/>
+			         	<setting name="spaceAfterTernaryColons" type="boolean" desc="Space after colons of ternary conditions"/>
+		
+			         	<setting name="spaceBeforeLabelColons" type="boolean" desc="Space before colons of labels"/>
+			         	<setting name="spaceAfterLabelColons" type="boolean" desc="Space after colons of labels"/>
+	
+		         		<setting name="spaceBeforeCaseColons" desc="White space before colons in switch-case blocks" type="boolean"/>^
+
+		         		<blankline/>
+
+			         	<label>White spaces of double colons ::</label>
+		         		<setting name="spaceBeforeMethodReferenceColons" desc="White space before colons in method references" type="boolean"/>^
+		         		<setting name="spaceAfterMethodReferenceColons" desc="White space before colons in method references" type="boolean"/>^		         		
+			      	</tab>
+				</node>		
+				<node name="Arrows">								
+				  	<tab preview="Whitespaces-LambdaArrow.java"
+		           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+
+			         	<label>White spaces of lambda arrows -></label>
+		         		<setting name="spaceBeforeLambdaArrows" desc="White space before colons in lambda expressions" type="boolean"/>
+		         		<setting name="spaceAfterLambdaArrows" desc="White space before colons in lambda expressions" type="boolean"/>		         		
+			      	</tab>
+				</node>		
+		   </topic>
+		   
+		   <!-- Blank Lines -->
+		
+		   <topic name="Blank Lines">
+		      <tab preview="BlankLines-Preserve.java"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter">
+		
+					<label>Preserve blank lines from input source code</label>
+		         <setting name="keepBlankLines" type="inumber" desc="Keep blank lines up to"/>
+		
+		      </tab>
+		      
+			  <node name="Comments">
+			      <tab preview="Comments-BlankLines.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Blank lines around block comments</label>
+			         <setting name="blankLinesBeforeBlockComments" type="number" desc="Blank lines before block comments"/>
+			         <setting name="blankLinesAfterBlockComments" type="number" desc="Blank lines after block comments"/>
+			
+						<blankline/>
+			         <label>Blank lines around single-line comments</label>
+			         <setting name="blankLinesBeforeSingleLineComments" type="number" desc="Blank lines before single-line comments"/>
+			         <setting name="blankLinesAfterSingleLineComments" type="number" desc="Blank lines after single-line comments"/>
+			
+						<blankline/>
+			         <label>Blank lines around end-of-line block comments</label>
+			         <setting name="blankLinesBeforeEndOfLineComments" type="number" desc="Blank lines before end-of-line comments"/>
+			         <setting name="blankLinesAfterEndOfLineComments" type="number" desc="Blank lines after end-of-line Comments"/>
+			      </tab>
+			      <node name="Commented Out Source Code">
+			         <tab preview="Comments-BlankLines.java"
+			              filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			            <label>Exception rule for commented out source code</label>
+			
+			            <setting name="doNotInsertBlankLinesBeforeFirstLineComments" type="boolean" 
+			                   desc="Do not insert blank lines before comments appearing\nin the first line of source code files"/>		         
+			        </tab>
+			  	 </node>		
+			  </node>
+		      
+		      <node name="JavaDocs">
+			  	  <tab preview="BlankLines-Statements.java"
+	           		   filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	             	  <label>Blank lines around JavaDocs</label>
+	
+	             	  <setting name="blankLinesBeforeJavaDocComments" desc="Blank lines before JavaDocs" type="number"/>
+	             	  <setting name="blankLinesAfterJavaDocComments" desc="Blank line after JavaDocs" type="number"/>
+	              </tab>
+		      </node>
+		      
+		      <node name="Statements">
+				  	<tab preview="BlankLines-Statements.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+						<label>Blank lines around statements containing blocks</label>
+		         		<setting name="blankLinesBeforeStatementsContainingBlocks" type="number" desc="Blank lines before statements containing blocks"/>
+		         		<setting name="blankLinesAfterStatementsContainingBlocks" type="number" desc="Blank lines after statements containing blocks"/>
+		
+						<blankline/>
+						<label>Blank lines between statements</label>
+		         		<setting name="blankLinesBetweenDifferentStatements" type="number" desc="Insert blank lines between different statement types"/>
+		
+						<blankline/>
+						<label>Blank lines before branching statements</label>
+		         		<setting name="blankLinesBeforeBreakStatements" desc="Blank lines before break statement" type="number"/>
+		         		<setting name="blankLinesBeforeContinueStatements" desc="Blank lines before continue statement" type="number"/>
+		         		<setting name="blankLinesBeforeReturnStatements" desc="Blank lines before return statement" type="number"/>
+		         		<setting name="blankLinesBeforeThrowStatements" desc="Blank lines before throw statement" type="number"/>		
+					</tab>
+			  </node>
+		      <node name="Switch-Case Blocks">
+					<tab preview="BlankLines-SwitchCase.java"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         	<label>Blank lines around switch-case blocks</label>
+			
+			         	<setting name="blankLinesBeforeFirstCaseBlock" type="number" desc="Insert blank lines before first case block"/>
+			         	<setting name="blankLinesBetweenCaseBlocks" type="number" desc="Insert blank lines between case blocks"/>		
+					</tab>
+			   </node>
+			   <node name="Declarations">		
+				  <tab preview="BlankLines-Declarations.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+				   	<label>Blank lines around local variable declarations</label>
+		           	<setting name="blankLinesBeforeLocalVariables" type="number" desc="Blank lines before local variable declarations"/>
+		           	<setting name="blankLinesAfterLocalVariables" type="number" desc="Blank lines after local variable declarations"/>
+		
+				   	<blankline/>
+				   	<label>Blank lines after ...</label>
+		           	<setting name="blankLinesAfterPackage" type="number" desc="Blank lines after package declarations"/>
+		         	<setting name="blankLinesAfterLastImport" type="number" desc="Blank lines after import declarations"/>
+			        <setting name="blankLinesAfterFields" type="number" desc="Blank lines after field declarations"/>
+			        <setting name="blankLinesAfterStaticInitializers" type="number" desc="Blank lines after static initializers"/>
+			        <setting name="blankLinesAfterInstanceInitializers" type="number" desc="Blank lines after instance initializers"/>
+			        <setting name="blankLinesAfterClasses" type="number" desc="Blank lines after class declarations"/>
+			        <setting name="blankLinesAfterInterfaces" type="number" desc="Blank lines after interface declarations"/>
+			        <setting name="blankLinesAfterConstructors" type="number" desc="Blank lines after constructor declarations"/>
+			        <setting name="blankLinesAfterMethods" type="number" desc="Blank lines after method declarations"/>
+			        <setting name="blankLinesAfterAnnotationTypes" type="number" desc="Blank lines after annotation type declarations"/>
+			        <setting name="blankLinesAfterEnumerations" type="number" desc="Blank lines after enum declarations"/>
+		
+					<blankline/>
+					<label>Blank lines between ...</label>
+		         	<setting name="blankLinesBetweenEnumElementsAndClassBody" type="number" desc = "Blank lines between enum elements\nand class body"/>
+		      	 </tab>
+		      </node>
+		   </topic>
+		   
+		   <!-- Line Wrapping -->
+
+		   <topic name="Line Wrapping">
+		      <tab preview="LineWrapping-General.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+					<label>General line wrapping</label>
+		         <setting name="wrapLines" type="boolean" desc="Enable line wrapping to fit source code to maximal line length"/>
+		         <setting name="maxLineLength" type="number" inputtype="linewrapping" desc="Maximal line length"/>
+		
+				 <setting name="lineWrappingPolicy" type="lineWrappingPolicy" desc="Line wrapping policy"/>
+		
+		         <setting name="wrapBecauseOfComments" type="boolean" desc="Wrap lines even if only comments exceed maximal line length"/>
+
+					<blankline/>
+					<label>Alternative indentation</label>
+		         <setting name="alternativeIndent" type="number" desc="Alternative indentation"/>
+		
+					<blankline/>
+					<label>Avoiding big gaps</label>
+		         <setting name="deepIndent" type="absoluteRelativeINumber" desc="Maximal gap size of indentations"/>
+		
+					<blankline/>
+					<label>Avoiding confusing indentation</label>
+		         <setting name="avoidConfusingIndentations" type="boolean" desc="Avoid confusing indentations"/>
+			  </tab>
+		
+			  <node name="Operators">
+		      	<tab preview="LineWrapping-Policy.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				 
+				 <label>Wrapping policy of conditional operators</label>
+		         <setting name="wrapConditionalOperators" desc="Conditional operators: &amp;&amp; ||" type="bawrapping"/>
+			     <setting name="wrapConditionalExpressions" type="wrapping" desc="Wrap conditional expressions"/>
+
+		         <blankline/>
+				 <label>Wrapping policy of comparison operators</label>		         
+		         <setting name="wrapComparisonOperators" desc="Comparison operators: &lt; &gt; == != ..." type="bawrapping"/>
+		         
+			     <blankline/>
+				 <label>Wrapping policy of numerical operators</label>		         		         
+		         <setting name="wrapNumericalOperators" desc="Numerical operators: + - * / % &amp; | &lt;&lt; &gt;&gt; ..." type="bawrapping"/>
+		
+			     <blankline/>
+				 <label>Wrapping policy of assignments</label>		         		         
+		         <setting name="allowWrappingAfterAssignments" type="boolean" desc="Wrap after assignments = on demand"/>
+				</tab>
+			  </node>
+		
+	      	<node name="Variable/Field Declarations">
+		      <tab preview="LineWrapping-Declarations-VariablesFields.java"
+	           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+			 	<label>Wrap local variable and field declarations</label>
+		        <setting name="deepIndentForMultipleDeclarations" type="absoluteRelativeINumber" desc="Maximal gap size of indentations for multiple\nvariable and field declarations"/>
+		        <blankline/>
+  			        <setting name="wrapDeclarationInitializersToRightSide" type="boolean" desc="Wrap initializers of variable and field declarations to right side\n(in this case the 'maximal gap settings' will be ignored)"/>
+			  </tab>
+			</node>
+			<node name="Class/Interface Declarations">		
+		      <tab preview="LineWrapping-Declarations-ClassesInterfaces.java"
+	           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				 <label>Wrap extends</label>
+	
+		         <setting name="wrapExtends" type="wrapping" desc="Wrap before extends"/>
+		         <setting name="indentWrappedExtends" type="number" desc="Indentation of wrapped extends"/>
+		         <setting name="wrapExtendsClasses" type="wrapping" desc="Wrap extended classes"/>
+		
+				 <blankline/>
+				 <label>Wrap implements</label>
+		         <setting name="wrapImplements" type="wrapping" desc="Wrap before implements"/>
+		         <setting name="indentWrappedImplements" type="number" desc="Indentation of wrapped implements"/>
+		         <setting name="wrapImplementsInterfaces" type="wrapping" desc="Wrap implemented interfaces"/>
+			  </tab>
+			</node>
+			<node name="Constructor/Method Declaration">
+		      <tab preview="LineWrapping-Declarations-ConstructorsMethods.java"
+	           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				 <label>Wrap constructor and method declarations</label>
+		         <setting name="wrapAfterMethodConstructorDeclarationModifiers" type="wrapping" desc="Wrap after modifiers"/>
+		         <setting name="wrapAfterMethodDeclarationReturnTypes" type="wrapping" desc="Wrap after method declaration return types"/>
+
+		         <setting name="wrapBeforeLeftParenthesisOfMethodConstructorDeclarations" type="wrapping" desc="Wrap before left parentheses ("/>
+		         <setting name="indentWrappedLeftParenthesisOfMethodConstructorDeclarations" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		         <setting name="wrapFirstParameterOfMethodConstructorDeclarations" type="wrapping" desc="Wrap first parameter"/>
+		         <setting name="indentWrappedFirstParameterOfMethodConstructorDeclarations" type="number" desc="Indentation of first wrapped parameter"/>
+
+		         <setting name="wrapParametersOfMethodConstructorDeclarations" type="wrapping" desc="Wrap all other parameters"/>
+
+		         <setting name="wrapBeforeRightParenthesisOfMethodConstructorDeclarations" type="wrapping" desc="Wrap before right parentheses )"/>
+		         <setting name="indentWrappedRightParenthesisOfMethodConstructorDeclarations" type="number" desc="Indentation of wrapped right parentheses )"/>
+
+		         <setting name="avoidConfusingIndentationsForMethodConstructorDeclarations" type="boolean" desc="Avoid confusing indentations for\nmethods and constructors declarations"/>
+		
+		         <setting name="wrapThrows" type="wrapping" desc="Wrap before throws"/>
+		         <setting name="indentWrappedThrows" type="number" desc="Indentation of wrapped throws"/>	
+		         <setting name="wrapThrowsExceptions" type="wrapping" desc="Wrap throws exceptions"/>
+			  </tab>
+			</node>
+			<node name="Lambda Declarations">
+		      <tab preview="LineWrapping-Declarations-Lambdas.java"
+	           	  filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+			 	<label>Wrapping of Lambda expressions</label>
+			 	<setting name="wrapLambdaParametersWithBlocks" type="wrapping" desc="Wrap lambda parameters of expressions with blocks" />
+	         	<setting name="indentWrappedLambdaParameters" type="number" desc="Indentation of wrapped lambda parameters"/>				 	
+			  </tab>
+			</node>				
+			<node name="Enum Declarations">
+		      <tab preview="LineWrapping-Declarations-Enums.java"
+	           	  filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+			 	<label>Wrap enum constants</label>
+		        <setting name="wrapEnumElements" type="wrapping" desc="Wrap Enum constants"/>
+				<blankline/>
+				<label>Line up enum constants</label>
+	         	<setting name="maxEnumElementsInOneLine" type="inumber" desc="Maximal number of enumeration constants\nlined up in one line"/>
+                <blankline/>
+ 				<label>Wrap parentheses of enums</label>
+		        <setting name="allowWrappingAfterLeftParenthesesOfEnums" type="boolean" desc="Wrap after left parentheses ( on demand"/>
+			  </tab>
+			</node>
+			<node name="Array Declarations">
+		      <tab preview="LineWrapping-LineUpElements.java"
+	           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				<label>Line up array initializers of variables and fields</label>
+	         	<setting name="maxArrayElementsInOneLine" type="inumber" desc="Maximal number of array initializer elements\nlined up in one line"/>
+			  </tab>
+			</node>
+				
+			 <node name="Chained Method Calls">		
+		      	<tab preview="LineWrapping-MethodCalls.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">			           		
+					<label>Wrap chained constructor calls and method calls</label>
+	         		<setting name="wrapChainedMethodConstructorCalls" type="wrapping" desc="Wrap chained constructor and method calls"/>
+	         		<setting name="indentWrappedChainedMethodConstructorCalls" type="number" desc="Indentation of wrapped chained constructor and method calls"/>
+	         		<setting name="wrapChainedMethodConstructorCallOperator" desc="chained method and constructor call operator ." type="bawrapping"/>
+	         		<setting name="alignWrappedChainedMethodConstructorCalls" desc="Align wrapped line to first chained method call dot ." type="boolean"/>
+		   		</tab>
+		   	</node>
+		   	<node name="Direct Method Calls"> 
+		      	<tab preview="LineWrapping-MethodCalls.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				
+					<label>Wrap direct constructor calls and method calls</label>
+
+		         	<setting name="wrapBeforeLeftParenthesisOfMethodConstructorCalls" type="wrapping" desc="Wrap before left parentheses ("/>
+		         	<setting name="indentWrappedLeftParenthesisOfMethodConstructorCalls" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		         	<setting name="wrapFirstArgumentOfMethodConstructorCalls" type="wrapping" desc="Wrap first argument"/>
+		         	<setting name="indentWrappedFirstArgumentOfMethodConstructorCalls" type="number" desc="Indentation of first wrapped argument"/>
+
+		         	<setting name="wrapArgumentsOfMethodConstructorCalls" type="wrapping" desc="Wrap all other arguments"/>
+		         	<setting name="wrapBeforeRightParenthesisOfMethodConstructorCalls" type="wrapping" desc="Wrap right parentheses )"/>
+		   		 	<setting name="indentWrappedRightParenthesisOfMethodConstructorCalls" type="number" desc="Indentation of wrapped right parentheses )"/>
+		   		 </tab>
+		   </node>
+		   <node name="Nested Method Calls">
+		      	<tab preview="LineWrapping-MethodCalls.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+
+					<label>Wrap nested method calls</label>
+
+		         	<setting name="wrapBeforeLeftParenthesisOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap before left parentheses ("/>
+		         	<setting name="indentWrappedLeftParenthesisOfNestedMethodConstructorCalls" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		         	<setting name="wrapFirstArgumentOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap first argument"/>
+		         	<setting name="indentWrappedFirstArgumentOfNestedMethodConstructorCalls" type="number" desc="Indentation of first wrapped argument"/>
+
+		         	<setting name="wrapArgumentsOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap all other arguments"/>
+		         	<setting name="wrapBeforeRightParenthesisOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap right parentheses )"/>
+		   		 	<setting name="indentWrappedRightParenthesisOfNestedMethodConstructorCalls" type="number" desc="Indentation of wrapped right parentheses )"/>
+		   		</tab>
+		      </node>  
+			  <node name="Statements">			
+		       	<tab preview="LineWrapping-Statements.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+ 				 	<label>Wrap for-each statements</label>
+		         	<setting name="wrapForEachColon" type="wrapping" desc="Wrap after for-each colon :"/>
+
+                 	<blankline/>
+ 				 	<label>Wrap import statements</label>
+		         	<setting name="allowWrappingOfImportStatements" type="boolean" desc="Wrap after points . on demand"/>
+
+                 	<blankline/>
+ 				 	<label>Wrap parentheses of statements</label>
+		         	<setting name="allowWrappingAfterLeftParenthesesOfStatements" type="boolean" desc="Wrap after left parentheses ( on demand"/>
+			  	</tab>
+			  </node>
+			  <node name="Annotations">
+		      	 <tab preview="LineWrapping-Annotations.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				 	<label>Annotations on new line</label>
+         		 	<setting name="annotationOnNewLine" type="boolean" desc="Put annotations always on new line"/>
+				 
+				 	<blankline/>
+				 	<label>Line up annotations</label>
+				 	<setting name="maxNumOfMarkerAnnotationInOneLine" type="inumber" desc="Maximal number of marker annotations lined up\nin one line as prefix before other declarations"/>
+		         	<setting name="maxNumOfAnnotationAssignmentsInOneLine" type="inumber" desc="Maximal number of annotation assignments\nlined up within parentheses"/>
+		         	<setting name="maxNumOfAnnotationValuesInOneLine" type="inumber" desc="Maximal number of annotation array values\nlined up in one line"/>
+
+                 	<blankline/>
+ 				 	<label>Wrap parentheses of annotations</label>
+		         	<setting name="allowWrappingAfterLeftParenthesesOfAnnotations" type="boolean" desc="Wrap after left parentheses ( on demand"/>
+				</tab>
+   		      </node>
+		   </topic>
+		   
+		   <!-- Alignments -->
+		
+		   <topic name="Alignments">
+		      <tab>
+		         <label>General chunk separation</label>
+		         <setting name="separateChunksByComments" type="boolean" desc="Comments separate alignment chunks"/>
+		         <setting name="separateChunksByExceedingLines" type="boolean" desc="Exceeding lines separate alignment chunks" />
+		      </tab>
+		      <node name="Variable/Field Declarations">
+			      <tab preview="Alignment-Variables.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of variable/field declarations</label>
+			
+			         <setting name="alignDeclarations" type="boolean" desc="Align variable/field declarations"/>
+			         <setting name="alignExceedingDeclarations" type="boolean" desc="Align declarations exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of variable/field declarations</label>
+			
+			         <setting name="indentDeclarationsByTabs" type="boolean" desc="Indent variable/field declarations by tab stops"/>			
+			      </tab>
+			   </node>
+			   <node name="Assignments">		
+			      <tab preview="Alignment-Variables.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of assignments</label>
+			
+			         <setting name="alignAssignments" type="boolean" desc="Align assignments"/>
+			         <setting name="alignExceedingAssignments" type="boolean" desc="Align assignments exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of assignments</label>
+			
+			         <setting name="indentAssignmentsByTabs" type="boolean" desc="Indent assignments by tab stops"/>
+			      </tab>
+			   </node>
+			   <node name="Parameter Declarations">
+			      <tab preview="Alignment-Parameters.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of parameter declarations</label>
+			
+			         <setting name="alignParameterDeclarations" type="boolean" desc="Align parameter declarations"/>
+			         <setting name="alignExceedingParameterDeclarations" type="boolean" desc="Align parameter declarations exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of parameter declarations</label>
+			
+			         <setting name="indentParameterDeclarationsByTabs" type="boolean" desc="Indent parameter declarations by tab stops"/>
+			      </tab>
+			   </node>
+			   <node name="Trailing Comments">
+			      <tab preview="Alignment-Comments.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of trailing comments</label>
+			
+			         <setting name="alignComments" type="boolean" desc="Align trailing comments"/>
+			         <setting name="alignExceedingComments" type="boolean" desc="Align trailing comments exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of trailing comments</label>
+			
+			         <setting name="minimumCommentIndent" type="number" desc="Minimum number of spaces to separate\ntrailing comments from code"/>
+			         <setting name="indentCommentsByTabs" type="boolean" desc="Indent trailing comments by tab stops"/>
+			      </tab>
+			   </node>
+			   <node name="Annotations">
+			      <tab preview="Alignment-Annotations.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of annotation defaults</label>
+			
+			         <setting name="alignAnnotationDefaults" type="boolean" desc="Align default values of annotations"/>
+			         <setting name="alignExceedingAnnotationDefaults" type="boolean" desc="Align default values exceeding max. line length"/>
+	
+	         		<blankline/>
+			         <label>Indentation of annotation defaults</label>
+			
+			         <setting name="indentAnnotationDefaultsByTabs" type="boolean" desc="Indent default values of annotations by tabs"/>
+			      </tab>
+			   </node>
+			   <node name="Ternary Conditions">
+			      <tab preview="Alignment-Ternary.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of ternary conditions</label>
+			
+			         <setting name="alignFirstTernaryExpression" type="boolean" desc="Align first ternary expression to ternary condition"/>
+			         <setting name="alignTernaryExpressions" type="boolean" desc="Align second ternary expression to first one"/>			
+			      </tab>
+		      </node>		
+		   </topic>
+		   
+		   <!-- Comments -->
+
+		   <topic name="Comments">
+		
+		      <tab preview="Comments.java"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of comments</label>
+		
+		         <setting name="formatBlockComments" type="boolean" desc="Format block comments"/>
+		         <setting name="formatSingleLineComments" type="boolean" desc="Format single-line comments"/>
+		         <setting name="formatEndOfLineComments" type="boolean" desc="Format end-of-line comments"/>
+		         <setting name="formatTrailingComments" type="boolean" desc="Format trailing comments"/>
+		
+		         <blankline/>
+		         <label>Deleting of comments</label>
+		
+		         <setting name="deleteBlockComments" type="boolean" desc="Delete block comments"/>
+		         <setting name="deleteSingleLineComments" type="boolean"  desc="Delete single-line comments"/>
+		         <setting name="deleteEndOfLineComments" type="boolean"  desc="Delete end-of-line comments"/>
+		         <setting name="deleteTrailingComments" type="boolean"  desc="Delete trailing comments"/>		         
+		      </tab>
+
+			  <node name="Commented Out Source Code">		
+			      <tab preview="Comments.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Exception rules for commented out source code</label>
+			
+			         <setting name="neverIndentAndFormatFirstColumnComments" type="boolean" desc="Never indent and format comments beginning in first column"/>
+			         <setting name="neverDeleteFirstColumnComments" type="boolean" desc="Never delete comments beginning in first column"/>
+			         <setting name="indentContentOfFirstColumnComments" type="boolean" desc="Indent comment out source code in first column comments"/>			
+			      </tab>
+			  </node>
+			  
+			  <node name="Generated Comments">		
+			      <tab preview="Comments.java"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Exception rules for generated comments</label>
+			
+					 <setting name="doNotFormatCommentsContainingKeys" type="string" desc="Do NOT format comments containing keys"/>
+			      </tab>
+			  </node>					  		
+		   </topic>
+
+			<!-- JavaDocs -->		
+		
+		   <topic name="JavaDocs">
+		   
+		      <tab preview="JavaDocs-Misc.java">
+	             <label>Format JavaDocs</label>
+	
+	             <setting name="formatJavaDocComments" type="boolean" desc="Format existing JavaDocs"/>
+	
+	             <blankline/>
+ 	             <label>Delete JavaDocs</label>
+	
+	             <setting name="deleteJavaDocComments" type="boolean" desc="Delete existing JavaDocs"/>		         
+	             <blankline/>
+
+		         <label>Completion of existing JavaDocs</label>
+		
+		         <setting name="insertMissingJavaDocTags" type="boolean" desc="Insert missing tags in existing JavaDocs"/>
+		         <setting name="deleteObsoleteJavaDocTags" type="boolean" desc="Delete obsolete tags from existing JavaDocs"/>
+		         <setting name="doNotCreateJavaDocsForOverrideAnnotation" type="boolean" desc="Do not create JavaDocs when @Override annotation is set"/>
+		         
+		         <blankline/>
+		         <label>Exceptions in JavaDoc templates</label>
+		         <setting name="sortExceptionsInTemplates" type="boolean" desc="Sort exceptions in JavaDoc templates"/>		        	
+		      </tab>
+		      <node name="Classes">
+		         <tab preview="JavaDocs-Classes.java"
+		           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		             <setting name="createPublicClassJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		             <setting name="createFriendlyClassJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		             <setting name="createProtectedClassJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		             <setting name="createPrivateClassJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		             <setting name="javaDocClassTop" type="text" desc="Top template"/>
+		             <setting name="javaDocClassParamSeparator" type="text" desc="Parameter separator template"/>
+		             <setting name="javaDocClassParam" type="text" desc="Parameter template"/>
+		             <setting name="javaDocClassBottom" type="text" desc="Bottom template"/>
+		         </tab>
+		     </node>
+			 <node name="Interfaces">
+		         <tab preview="JavaDocs-Interfaces.java"
+		           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicInterfaceJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyInterfaceJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedInterfaceJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateInterfaceJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		             <setting name="javaDocInterfaceTop" type="text" desc="Top template"/>
+		             <setting name="javaDocInterfaceParamSeparator" type="text" desc="Parameter separator template"/>
+		             <setting name="javaDocInterfaceParam" type="text" desc="Parameter template"/>
+		             <setting name="javaDocInterfaceBottom" type="text" desc="Bottom template"/>
+		         </tab>
+		     </node>
+			 <node name="Annotation Types">
+		         <tab preview="JavaDocs-AnnotationTypes.java"
+		           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicAnnotationTypeJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyAnnotationTypeJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedAnnotationTypeJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateAnnotationTypeJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			        <blankline/>
+		            <setting name="javaDocAnnotationType" type="text" desc="Template"/>
+		         </tab>
+		      </node>
+		      <node name="Enums">
+		         <tab preview="JavaDocs-Enums.java"
+				          filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicEnumJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyEnumJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedEnumJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateEnumJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		            <setting name="javaDocEnum" type="text" desc="Template"/>
+		         </tab>
+		     </node>
+		     <node name="Fields">
+		         <tab preview="JavaDocs-Fields.java"
+			           	filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicFieldJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyFieldJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedFieldJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateFieldJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		            <setting name="javaDocField" type="text" desc="Template"/>
+		         </tab>
+		     </node>
+		     <node name="Constructors">
+		         <tab preview="JavaDocs-Constructors.java"
+			           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			         <label>Create JavaDocs for ...</label>
+		   
+		             <setting name="createPublicConstructorJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		             <setting name="createFriendlyConstructorJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		             <setting name="createProtectedConstructorJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		             <setting name="createPrivateConstructorJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+			         <label>Templates</label>
+		
+		             <setting name="javaDocConstructorTop" type="text" desc="Top template"/>
+		             <setting name="javaDocConstructorParamSeparator" type="text" desc="Parameter separator template"/>
+		             <setting name="javaDocConstructorParam" type="text" desc="Parameter template"/>
+		             <setting name="javaDocConstructorExceptionSeparator" type="text" desc="Exception separator template"/>
+		             <setting name="javaDocConstructorException" type="text" desc="Exception template"/>
+		             <setting name="javaDocConstructorBottom" type="text" desc="Bottom template"/>
+		         </tab>
+		    </node>
+		    <node name="Methods">
+		        <tab preview="JavaDocs-Methods.java"
+		           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			        <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicMethodJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyMethodJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedMethodJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateMethodJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			        <blankline/>
+			        <label>Templates</label>
+		
+		            <setting name="javaDocMethodTop" type="text" desc="Top template"/>
+		            <setting name="javaDocMethodParamSeparator" type="text" desc="Parameter separator template"/>
+		            <setting name="javaDocMethodParam" type="text" desc="Parameter template"/>
+		            <setting name="javaDocMethodReturn" type="text" desc="Return Template"/>
+		            <setting name="javaDocMethodExceptionSeparator" type="text" desc="Exception separator template"/>
+		            <setting name="javaDocMethodException" type="text" desc="Exception template"/>
+		            <setting name="javaDocMethodBottom" type="text" desc="Bottom template"/>
+		         </tab>
+		     </node>
+		   </topic>
+		   
+		   <!-- Sorting -->
+		
+		   <topic name="Sorting">
+		
+		      <tab>
+		          <label>Sorting policy</label>
+		          <setting name="useCaseSensitiveNameSorting" type="boolean" desc="Use case-sensitive name sorting"/>
+		      </tab>
+			  <node name ="Type Declarations">		
+			     <tab preview="Sorting-TypeDeclarations.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+					 <label>Sorting of type declarations</label>
+		
+		   	         <setting name="sortTypeDeclarations" type="boolean" desc="Sort type declarations"/>
+			         <setting name="insertSeparatorCommentsInTypeDeclarations" type="boolean" desc="Insert separator comments before type declarations"/>
+			         <setting name="insertSeparatorCommentsOnlyBetweenTypeDeclarations" type="boolean" desc="Insert separator comments only between type declarations"/>
+			
+					 <blankline/>
+					 <label>Sorting order of type declarations</label>
+			         <setting name="typeDeclarationsSorter" type="sorter" desc="Type declaration sorter tree"/>
+			     </tab>
+			  </node>
+			  <node name="Class/Interface/Enum Declarations">
+			     <tab  preview="Sorting-ClassInterfaceDeclarations.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+					<label>Sorting within class, interface and enum declarations</label>
+		
+		   	        <setting name="sortClassInterfaceEnumDeclarations" type="boolean" desc="Sort within class, interface and enum declarations"/>
+			        <setting name="insertSeparatorCommentsInClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments before declarations\nwithin class, interface and enum declarations"/>
+			        <setting name="insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments only between declarations\nwithin class, interface and enum declarations"/>
+		 			<setting name="insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments within nested class, interface\nand enum declarations"/>
+		
+					<blankline/>
+					<label>Sorting order within class, interface and enum declarations</label>
+			        <setting name="classInterfaceEnumDeclarationsSorter" type="sorter" desc="Within type declaration sorter tree"/>
+				 </tab>
+		      </node>
+		      <node name="Import Declarations">
+			      <tab preview="Sorting-Imports.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+					 <label>Sorting of import declarations</label>
+		
+			         <setting name="sortImportDeclarations" type="boolean" desc="Sort import declarations"/>
+			         <setting name="insertSeparatorCommentsInImportDeclarations" type="boolean" desc="Insert separator comments before import declarations"/>
+			         <setting name="insertSeparatorCommentsOnlyBetweenImportDeclarations" type="boolean" desc="Insert separator comments only between import declarations"/>
+		
+					 <blankline/>
+					 <label>Sorting order of import declarations</label>
+			         <setting name="importDeclarationsSorter" type="sorter" desc="Import declaration sorter tree"/>
+		
+					 <blankline/>
+					 <label>Grouping and separation of imports</label>
+		
+			         <setting name="importGroupingDepth" type="number" desc="Grouping depth of imported packages"/>
+			         <setting name="blankLinesToSeparateImportGroups" type="number" desc="Blank lines around import declaration"/>
+			         <setting name="blankLinesToSeparateStaticImportGroups" type="number" desc="Blank lines around static import declaration"/>		
+			      </tab>
+		      </node>
+		
+			  <node name="Separator Comments">
+		         <tab preview="Sorting-SeparatorComments.java"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+					<label>Insert separator comments before ...</label>
+		         
+  		            <setting name="insertStaticInitializersSeparator" type="boolean" desc="Static initializers" formatting="NO_NEW_ROW"/>
+		            <setting name="staticInitializersSeparator" type="string" desc=""/>
+		
+		            <setting name="insertStaticFieldsSeparator" type="boolean" desc="Static fields" formatting="NO_NEW_ROW"/>
+		            <setting name="staticFieldsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertInitializersSeparator" type="boolean" desc="Initializers" formatting="NO_NEW_ROW"/>
+		            <setting name="initializersSeparator" type="string" desc=""/>
+		
+		            <setting name="insertFieldsSeparator" type="boolean" desc="Fields" formatting="NO_NEW_ROW"/>
+		            <setting name="fieldsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertEnumsSeparator" type="boolean" desc="Enums" formatting="NO_NEW_ROW"/>
+		            <setting name="enumsSeparator" type="string" desc=""/>
+
+		            <setting name="insertEnumConstantsSeparator" type="boolean" desc="Constant enums" formatting="NO_NEW_ROW"/>
+		            <setting name="enumConstantsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertAnnotationsSeparator" type="boolean" desc="Annotations" formatting="NO_NEW_ROW"/>
+		            <setting name="annotationsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertConstructorsSeparator" type="boolean" desc="Constructors" formatting="NO_NEW_ROW"/>
+		            <setting name="constructorsSeparator" type="string" desc=""/>
+		
+ 		            <setting name="insertMethodsSeparator" type="boolean" desc="Methods" formatting="NO_NEW_ROW"/>
+		            <setting name="methodsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertClassesSeparator" type="boolean" desc="Classes" formatting="NO_NEW_ROW"/>
+		            <setting name="classesSeparator" type="string" desc=""/>
+		
+		            <setting name="insertNestedClassesSeparator" type="boolean" desc="Inner classes" formatting="NO_NEW_ROW"/>
+		            <setting name="nestedClassesSeparator" type="string" desc=""/>
+		
+		            <setting name="insertInterfacesSeparator" type="boolean" desc="Interfaces" formatting="NO_NEW_ROW"/>
+		            <setting name="interfacesSeparator" type="string" desc=""/>
+
+		            <setting name="insertNestedInterfacesSeparator" type="boolean" desc="Inner interfaces" formatting="NO_NEW_ROW"/>
+		            <setting name="nestedInterfacesSeparator" type="string" desc=""/>
+		
+		            <setting name="insertImportJDKSeparator" type="boolean" desc="JDK imports" formatting="NO_NEW_ROW"/>
+		            <setting name="importJDKSeparator" type="string" desc=""/>
+		
+		            <setting name="insertImportNonJDKSeparator" type="boolean" desc="Non-JDK imports" formatting="NO_NEW_ROW"/>
+		            <setting name="importNonJDKSeparator" type="string" desc=""/>
+		
+		            <blankline/>
+					<label>Fine grained separator comments for methods</label>
+		
+		            <setting name="insertGetMethodsSeparator" type="boolean" desc="Get methods" formatting="NO_NEW_ROW"/>
+		            <setting name="getMethodsSeparator" type="string" desc=""/>
+		
+		            <setting name="insertSetMethodsSeparator" type="boolean" desc="Set methods" formatting="NO_NEW_ROW"/>
+		            <setting name="setMethodsSeparator" type="string" desc=""/>
+		         
+		            <blankline/>
+		            <label>Separator comments fill up</label>
+		            <setting name="separatorCommentFillCharacters" type="string" desc="Characters to fill up\nseparator comments"/>
+		            <setting name="separatorCommentLineLength" type="number" desc="Maximal line length used\nto fill up separator comments"/>
+		         </tab> 
+		      </node>
+		   </topic>
+
+
+			<!-- Organize Imports -->
+		
+		   <topic name="Optimize Imports">
+		
+		      <tab>
+		         <label>Optimization of imports (IntelliJ IDEA/Eclipse plugin only)</label>
+		         <setting name="optimizeImports" type="boolean" desc="Remove unused imports and resolve wildcard imports"/>
+			  </tab>
+			</topic>
+
+			<!-- Header/Footer -->
+		
+		   <topic name="Header/Footer">
+		   		
+		      <node name="Header">
+			      <tab preview="HeaderFooter.java" 
+			      		filters="NoNotesFilter, NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Detection of previous inserted headers</label>
+			
+			         <setting name="headerDetectionSmartMode" type="inumber" desc="Header detection smart mode"/>
+			         <setting name="headerDetectionIncludeKeys" type="string" desc="Detect headers containing keys"/>
+			         <setting name="headerDetectionExcludeKeys" type="string" desc="Detect headers NOT containing keys"/>
+			
+			         <blankline/>
+			         <label>Formatting of header</label>
+			
+			         <setting name="formatHeader" type="boolean" desc="Format detected headers"/>
+			
+					 <blankline/>
+					 <label>Blank lines around detected headers\nand header templates</label>
+			         <setting name="blankLinesBeforeHeader" type="number" desc="Blank lines before header"/>
+			         <setting name="blankLinesAfterHeader" type="nznumber" desc="Blank lines after header"/>
+			
+			         <blankline/>
+			         <label>Insertion of new header</label>
+			
+			         <setting name="headerInsertionMode" type="header" desc="Header insertion mode"/>
+			         <setting name="headerTemplate" type="text" desc="Header text template"/>
+			      </tab>
+			   </node>
+			   <node name="Footer">
+		          <tab preview="HeaderFooter.java" 
+		      		   filters="NoNotesFilter, NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			          <label>Detection of previous inserted footers</label>
+			
+			          <setting name="footerDetectionSmartMode" type="inumber" desc="Footer detection smart mode"/>
+			          <setting name="footerDetectionIncludeKeys" type="string" desc="Detect footers containing keys"/>
+		 	          <setting name="footerDetectionExcludeKeys" type="string" desc="Detect footers NOT containing keys"/>
+			
+			          <blankline/>
+			          <label>Formatting of footer</label>
+			
+			          <setting name="formatFooter" type="boolean" desc="Format detected footers"/>
+			
+				      <blankline/>
+					  <label>Blank lines around detected footers\nand footer templates</label>
+			          <setting name="blankLinesBeforeFooter" type="nznumber" desc="Blank lines before footer"/>
+			          <setting name="blankLinesAfterFooter" type="number" desc="Blank lines after footer"/>
+			
+			          <blankline/>
+			          <label>Insertion of new footer</label>
+			
+			          <setting name="footerInsertionMode" type="footer" desc="Footer insertion mode"/>
+			          <setting name="footerTemplate" type="text" desc="Footer text template"/>
+			      </tab>
+			   </node>		
+		   	   <node name="Code Convention Note">
+		      	  <tab preview="CodeConvention.java" 
+		      		  filters="NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			         <label>Java code convention note</label>
+			
+			         <setting name="conventionNote" type="string" desc="Note"/>
+			
+			         <setting name="conventionNotePosition" type="position" desc="Position"/>
+			         <setting name="blankLinesToSeparateConventionNote" type="number" desc="Separated by blank lines"/>
+			
+			      </tab>
+			  </node>
+			  <node name="Jindent Note">
+		         <tab  preview="CodeConvention.java" 
+		      		  filters="NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			         <label>Jindent note</label>
+			
+			         <setting name="jindentNotePosition" type="position" desc="Position"/>
+			         <setting name="blankLinesToSeparateJindentNote" type="number" desc="Separated by blank lines"/>
+		      	</tab>
+		      </node>
+		   </topic>	
+
+			<!-- SQLJ -->
+
+			<topic name="SQLJ">
+			   <tab preview="SQLJ-Statements.sqlj"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">		   
+	           		 <label>Blank lines around SQLJ statements</label>
+			         <setting name="blankLinesBeforeFilteredCode" type="number" desc="Blank lines before SQLJ statements"/>
+			         <setting name="blankLinesAfterFilteredCode" type="number" desc="Blank lines after SQLJ statements"/>
+			   </tab>
+		    </topic>
+		    
+		    <!-- Constraints -->
+		
+		   <constraint src="conventionNotePosition" rule="disable">
+		      blankLinesToSeparateConventionNote, conventionNote
+		   </constraint>
+		
+		   <constraint src="jindentNotePosition" rule="disable">
+		      blankLinesToSeparateJindentNote
+		   </constraint>
+		
+		   <constraint src="headerInsertionMode" rule="disable">
+		      headerTemplate
+		   </constraint>
+		
+		   <constraint src="footerInsertionMode" rule="disable">
+		      footerTemplate
+		   </constraint>
+		
+		   <constraint src="insertBracesIntoIfElseStatements" rule="disable">
+		      singleIfStatementInOneLine, singleElseStatementInOneLine
+		   </constraint>
+		
+		   <constraint src="alignDeclarations" rule="enable">
+		      alignExceedingDeclarations
+		   </constraint>
+		   <constraint src="alignComments" rule="enable">
+		      alignExceedingComments
+		   </constraint>
+		   <constraint src="alignAssignments" rule="enable">
+		      alignExceedingAssignments
+		   </constraint>
+		   <constraint src="alignParameterDeclarations" rule="enable">
+		      alignExceedingParameterDeclarations
+		   </constraint>
+		
+		   <constraint src="deleteJavaDocComments" rule="disable">
+		      formatJavaDocComments
+		   </constraint>
+		
+		   <constraint src="formatBlockComments,
+		                    formatSingleLineComments,
+		                    formatEndOfLineComments,
+		                    formatTrailingComments" rule="enable">
+		         doNotFormatCommentsContainingKeys
+			</constraint>
+		
+		   <constraint src="neverIndentAndFormatFirstColumnComments" rule="enable">
+			   indentContentOfFirstColumnComments,
+			   neverDeleteFirstColumnComments
+			</constraint>
+		
+		   <constraint src="wrapLines" rule="enable">
+				maxLineLength,
+				lineWrappingPolicy,
+				wrapBecauseOfComments,
+				deepIndent,
+				avoidConfusingIndentations,
+				alternativeIndent,
+				wrapConditionalOperators,
+				wrapComparisonOperators,
+				wrapNumericalOperators,
+				allowWrappingAfterAssignments,
+				allowWrappingAfterLeftParenthesesOfStatements,
+				allowWrappingAfterLeftParenthesesOfAnnotations,
+				allowWrappingAfterLeftParenthesesOfEnums,
+				deepIndentForMultipleDeclarations,
+				wrapDeclarationInitializersToRightSide,
+				wrapExtends,
+				indentWrappedExtends,
+				wrapExtendsClasses,
+				wrapImplements,
+				indentWrappedImplements,
+				wrapImplementsInterfaces,
+				wrapFirstParameterOfMethodConstructorDeclarations,
+				wrapParametersOfMethodConstructorDeclarations,
+				wrapBeforeRightParenthesisOfMethodConstructorDeclarations,
+				avoidConfusingIndentationsForMethodConstructorDeclarations,
+				wrapAfterMethodConstructorDeclarationModifiers,
+				wrapAfterMethodDeclarationReturnTypes,
+				wrapThrows,
+				indentWrappedThrows,
+				wrapThrowsExceptions,
+				maxArrayElementsInOneLine,
+				wrapEnumElements,
+				maxEnumElementsInOneLine,
+				annotationOnNewLine,
+				maxNumOfMarkerAnnotationInOneLine,
+				maxNumOfAnnotationAssignmentsInOneLine,
+				maxNumOfAnnotationValuesInOneLine,
+				wrapChainedMethodConstructorCalls,
+		       	indentWrappedChainedMethodConstructorCalls,
+		       	wrapChainedMethodConstructorCallOperator,
+		       	alignWrappedChainedMethodConstructorCalls,
+				wrapFirstArgumentOfMethodConstructorCalls,
+				wrapArgumentsOfMethodConstructorCalls,
+				wrapBeforeRightParenthesisOfMethodConstructorCalls,
+				indentWrappedRightParenthesisOfMethodConstructorCalls,
+				wrapFirstArgumentOfNestedMethodConstructorCalls,
+				wrapArgumentsOfNestedMethodConstructorCalls,
+				wrapBeforeRightParenthesisOfNestedMethodConstructorCalls,
+				indentWrappedRightParenthesisOfNestedMethodConstructorCalls,
+				wrapBeforeLeftParenthesisOfMethodConstructorDeclarations,
+				indentWrappedLeftParenthesisOfMethodConstructorDeclarations,
+				indentWrappedFirstParameterOfMethodConstructorDeclarations,
+				indentWrappedRightParenthesisOfMethodConstructorDeclarations,
+				wrapBeforeLeftParenthesisOfMethodConstructorCalls,
+				indentWrappedLeftParenthesisOfMethodConstructorCalls,
+				indentWrappedFirstArgumentOfMethodConstructorCalls,
+				wrapBeforeLeftParenthesisOfNestedMethodConstructorCalls,
+				indentWrappedLeftParenthesisOfNestedMethodConstructorCalls,
+				indentWrappedFirstArgumentOfNestedMethodConstructorCalls,
+				wrapForEachColon
+			</constraint>
+
+		   <constraint src="lineWrappingPolicy" rule="disable">
+				deepIndent,
+				avoidConfusingIndentations,
+				wrapDeclarationInitializersToRightSide
+			</constraint>
+		
+		   <constraint src="sortTypeDeclarations" rule="enable">
+		      insertSeparatorCommentsInTypeDeclarations,
+				insertSeparatorCommentsOnlyBetweenTypeDeclarations,
+		      typeDeclarationsSorter
+		   </constraint>
+		
+		   <constraint src="insertSeparatorCommentsInTypeDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenTypeDeclarations
+		   </constraint>
+		
+		   <constraint src="sortClassInterfaceEnumDeclarations" rule="enable">
+		      insertSeparatorCommentsInClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations,
+		      classInterfaceEnumDeclarationsSorter
+		   </constraint>
+		
+		   <constraint src="insertSeparatorCommentsInClassInterfaceEnumDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations
+		   </constraint>
+		
+		
+		   <constraint src="sortImportDeclarations" rule="enable">
+		      insertSeparatorCommentsInImportDeclarations,
+				insertSeparatorCommentsOnlyBetweenImportDeclarations,
+		      importDeclarationsSorter
+		   </constraint>
+		
+		   <constraint src="insertSeparatorCommentsInImportDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenImportDeclarations
+		   </constraint>
+		
+		   <constraint src="
+					createPublicInterfaceJavaDocs,
+					createPrivateInterfaceJavaDocs,
+					createProtectedInterfaceJavaDocs,
+					createFriendlyInterfaceJavaDocs,
+					createPublicClassJavaDocs,
+					createPrivateClassJavaDocs,
+					createProtectedClassJavaDocs,
+					createFriendlyClassJavaDocs,
+					createPublicConstructorJavaDocs,
+					createPrivateConstructorJavaDocs,
+					createProtectedConstructorJavaDocs,
+					createFriendlyConstructorJavaDocs,
+					createPublicMethodJavaDocs,
+					createPrivateMethodJavaDocs,
+					createProtectedMethodJavaDocs,
+					createFriendlyMethodJavaDocs" 
+				rule="enable" concatenation="or">
+				sortExceptionsInTemplates,
+				insertMissingJavaDocTags,
+				deleteObsoleteJavaDocTags
+		   </constraint>
+		
+		   <constraint src="
+					createPublicConstructorJavaDocs,
+					createPrivateConstructorJavaDocs,
+					createProtectedConstructorJavaDocs,
+					createFriendlyConstructorJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocConstructorTop,
+				javaDocConstructorParam,
+				javaDocConstructorParamSeparator,
+				javaDocConstructorException,
+				javaDocConstructorExceptionSeparator,
+				javaDocConstructorBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicMethodJavaDocs,
+					createPrivateMethodJavaDocs,
+					createProtectedMethodJavaDocs,
+					createFriendlyMethodJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocMethodTop,
+				javaDocMethodParam,
+				javaDocMethodParamSeparator,
+				javaDocMethodReturn,
+				javaDocMethodException,
+				javaDocMethodExceptionSeparator,
+				javaDocMethodBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicClassJavaDocs,
+					createPrivateClassJavaDocs,
+					createProtectedClassJavaDocs,
+					createFriendlyClassJavaDocs"
+				rule="enable" concatenation="or">
+		        javaDocClassTop, 
+		        javaDocClassParamSeparator, 
+		        javaDocClassParam, 
+		        javaDocClassBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicInterfaceJavaDocs,
+					createPrivateInterfaceJavaDocs,
+					createProtectedInterfaceJavaDocs,
+					createFriendlyInterfaceJavaDocs"
+				rule="enable" concatenation="or">
+		        javaDocInterfaceTop, 
+		        javaDocInterfaceParamSeparator, 
+		        javaDocInterfaceParam, 
+		        javaDocInterfaceBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicEnumJavaDocs,
+					createPrivateEnumJavaDocs,
+					createProtectedEnumJavaDocs,
+					createFriendlyEnumJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocEnum
+		   </constraint>
+		
+		   <constraint src="
+					createPublicAnnotationTypeJavaDocs,
+					createPrivateAnnotationTypeJavaDocs,
+					createProtectedAnnotationTypeJavaDocs,
+					createFriendlyAnnotationTypeJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocAnnotationType
+		   </constraint>
+		
+		   <constraint src="
+					createPublicFieldJavaDocs,
+					createPrivateFieldJavaDocs,
+					createProtectedFieldJavaDocs,
+					createFriendlyFieldJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocField
+		   </constraint>
+		
+		   <constraint src="
+					paddingMethodConstructorDeclarationParentheses,
+					paddingMethodConstructorCallParentheses"
+				rule="enable" concatenation="or">
+				noPaddingOfEmptyParentheses
+		   </constraint>
+		
+		   <constraint src="
+					paddingMethodConstructorDeclarationParentheses,
+					paddingMethodConstructorCallParentheses,
+					paddingExpressionParentheses,
+					paddingSingleMemberAnnotationParentheses,
+					paddingNormalAnnotationParentheses,
+					paddingForParentheses,
+					paddingIfParentheses,
+					paddingWhileParentheses,
+					paddingCatchParentheses,
+					paddingSwitchParentheses,
+					paddingSynchronizedParentheses,
+					paddingCastParentheses"
+				rule="enable" concatenation="or">
+				combinePaddingParentheses
+		   </constraint>
+
+		   <constraint src="
+		   		spaceBeforeForSemicolons, 
+		   		spaceAfterForSemicolons" 
+		   	rule="enable" concatenation="or">
+				noSpacesBetweenEmptyForSemicolons
+			</constraint>
+
+		   <constraint src="paddingBracesOfGenerics" rule="enable">
+		      noPaddingOfEmptyBracesOfGenerics
+		   </constraint>
+			
+		   <constraint src="paddingBrackets" rule="enable">
+		      noPaddingOfEmptyBrackets
+		   </constraint>
+		
+		   <constraint src="paddingBracesOfInitializers" rule="enable">
+		      noPaddingOfEmptyBracesInInitializers
+		   </constraint>
+		
+		   <constraint src="wrapParametersOfMethodConstructorDeclarations"
+					   rule="disabled">
+				alignParameterDeclarations,
+				alignExceedingParameterDeclarations,
+				indentParameterDeclarationsByTabs
+			</constraint>
+		
+		   <constraint src="insertStaticInitializersSeparator" rule="enable">
+				staticInitializersSeparator
+		   </constraint>
+		
+		   <constraint src="insertStaticFieldsSeparator" rule="enable">
+				staticFieldsSeparator
+		   </constraint>
+		
+		   <constraint src="insertInitializersSeparator" rule="enable">
+				initializersSeparator
+		   </constraint>
+		
+		   <constraint src="insertFieldsSeparator" rule="enable">
+				fieldsSeparator
+		   </constraint>
+				
+		   <constraint src="insertEnumsSeparator" rule="enable">
+				enumsSeparator
+		   </constraint>
+		
+		   <constraint src="insertAnnotationsSeparator" rule="enable">
+				annotationsSeparator
+		   </constraint>
+		
+		   <constraint src="insertEnumConstantsSeparator" rule="enable">
+				enumConstantsSeparator
+		   </constraint>
+		
+		   <constraint src="insertConstructorsSeparator" rule="enable">
+				constructorsSeparator
+		   </constraint>
+		
+		   <constraint src="insertMethodsSeparator" rule="enable">
+				methodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertGetMethodsSeparator" rule="enable">
+				getMethodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertSetMethodsSeparator" rule="enable">
+				setMethodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertClassesSeparator" rule="enable">
+				classesSeparator
+		   </constraint>
+		
+		   <constraint src="insertNestedClassesSeparator" rule="enable">
+				nestedClassesSeparator
+		   </constraint>
+		
+		   <constraint src="insertInterfacesSeparator" rule="enable">
+				interfacesSeparator
+		   </constraint>
+
+		   <constraint src="insertNestedInterfacesSeparator" rule="enable">
+				nestedInterfacesSeparator
+		   </constraint>
+
+		   <constraint src="insertImportJDKSeparator" rule="enable">
+				importJDKSeparator
+		   </constraint>
+
+		   <constraint src="insertImportNonJDKSeparator" rule="enable">
+				importNonJDKSeparator
+		   </constraint>
+
+		   <constraint src="
+		   		sortTypeDeclarations, 
+		         sortClassInterfaceEnumDeclarations,
+		   		sortImportDeclarations" rule="enable" concatenation="or">
+		   		useCaseSensitiveNameSorting,
+		   	    insertStaticInitializersSeparator,
+				staticInitializersSeparator,
+				insertStaticFieldsSeparator,
+				staticFieldsSeparator,
+				insertInitializersSeparator,
+				initializersSeparator,
+				insertFieldsSeparator,
+				fieldsSeparator,
+				insertEnumsSeparator,
+				enumsSeparator,
+				insertAnnotationsSeparator,
+				annotationsSeparator,
+				insertEnumConstantsSeparator,
+				enumConstantsSeparator,
+				insertConstructorsSeparator,
+				constructorsSeparator,
+				insertMethodsSeparator,
+				methodsSeparator,
+				insertGetMethodsSeparator,
+				getMethodsSeparator,
+				insertSetMethodsSeparator,
+				setMethodsSeparator,
+				insertClassesSeparator,
+				classesSeparator,
+				insertNestedClassesSeparator,
+				nestedClassesSeparator,
+				insertInterfacesSeparator,
+				interfacesSeparator,
+				insertNestedInterfacesSeparator,
+				nestedInterfacesSeparator,
+				insertImportJDKSeparator,
+				importJDKSeparator,
+				insertImportNonJDKSeparator,
+				importNonJDKSeparator
+		   </constraint>
+		   
+		   <constraint src="annotationOnNewLine" rule="disable">
+				maxNumOfMarkerAnnotationInOneLine
+		   </constraint>
+		</node>
+		
+		<!--+
+		    | C / C++ Language 
+		    +-->		
+ 
+		<node name="C / C++" version="4.0.0" prefix="cpp">
+
+		   <topic name="Text Encoding">
+	      	 <tab>
+		         <label>Input</label>
+		         <setting name="inputTabulatorSize" type="nznumber" desc="Tabulator size of input source code"/>
+		         <setting name="inputEncoding" type="encoding" desc="Input encoding"/>
+		         
+		         <blankline/>
+		         
+		         <label>Output</label>
+		         <setting name="outputEndOfLineFormat" type="endOfLineFormat" desc="End of line output format"/>
+		         <setting name="outputEncoding" type="encoding" desc="Output encoding"/>
+	         </tab>
+		   </topic>
+
+		   <topic name="Indentation">
+		
+		      <tab preview="Indentation-General.cpp" 
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>General indentations</label>
+		
+		         <setting name="tabulatorSize" type="nznumber" desc="Tabulator stop size"/>
+		         <setting name="firstLevelIndent" type="number" desc="First level indentation size"/>
+		         <setting name="indentSize" type="number" desc="General indentation size"/>
+		         <setting name="indentLeadingsByTabs" type="boolean" desc="Indent leading code by tab stops"/>
+		
+		      </tab>
+			
+			  <node name="Labels">
+			      <tab preview="Indentation-Label.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Indentation of labels</label>
+			
+			         <setting name="indentLabels" type="boolean" desc="Indent labels"/>
+			
+			         <blankline/>
+			         <label>Separation of labels</label>
+			         <setting name="labelNewLine" type="boolean" desc="Labels on new lines"/>
+			
+			      </tab>
+			  </node>
+		
+		      <node name="Switch-Case">
+			      <tab preview="Indentation-SwitchCase.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Switch-Case indentation</label>
+			
+			         <setting name="indentCaseFromSwitch" type="number" desc="Indent case from switch"/>
+			         <setting name="indentBlockFromCase" type="number" desc="Indent block { ... } from case"/>
+			
+			      </tab>
+			  </node>
+
+		      <node name="Namespaces">
+			      <tab preview="Indentation-Namespace.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Namespace indentation</label>
+			
+			         <setting name="indentNamespaceSize" type="number" desc="Indentation size for namespaces"/>
+			
+			      </tab>
+			  </node>
+			  
+		      <node name="Directives/Macros">
+			      <tab preview="Indentation-DirectivesMacros.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">		   
+
+	           		 <!-- label>Indentation of preprocessor directives</label -->
+			         <setting name="indentPreprocessorDirectives" type="preprocessorIndentation" desc="Indent preprocessor directives" />
+
+		         	 <blankline/>
+			         <setting name="indentBlockWithinBeginEndMacros" type="number" desc="Indent block within Begin- and End-macros"/>
+			      </tab>
+			  </node>		   
+		   </topic>
+		   
+		   
+		   <topic name="Braces Style">
+
+			  <node name="Class/Struct/Union Type"> 		
+			      <tab preview="BracesStyle-Classes.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="classInterfaceBraceStyle" type="braces" desc="Brace style for class/struct/union type declarations"/>
+			
+			      </tab>
+			  </node>
+			  <node name="Constructor/Destructor/Function"> 
+			      <tab preview="BracesStyle-Methods.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="methodConstructorBraceStyle" type="braces" desc="Brace style for constructor/destructor/function declarations"/>
+			      </tab>
+			  </node>
+			  <node name="If-Else">
+			      <tab preview="BracesStyle-IfElse.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="ifElseBraceStyle" type="braces" desc="Brace style for if-else statements"/>
+			      </tab>
+			  </node>
+			  <node name="Do-While/While/For"> 
+			      <tab preview="BracesStyle-Loop.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="loopBraceStyle" type="braces" desc="Brace style for loop statements"/>
+			      </tab>
+			  </node>
+			  <node name="Switch-Case">
+			      <tab preview="BracesStyle-SwitchCase.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="switchCaseBraceStyle" type="braces" desc="Brace style for switch case statements"/>
+			      </tab>
+			  </node>
+			  <node name="Block/Initializer/Namespace/Linkage"> 
+			      <tab preview="BracesStyle-Block.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="blockBraceStyle" type="braces" desc="Brace style for blocks, initializers,\nnamespace and linkage definitions"/>
+			      </tab>
+			  </node>
+			  <node name="Enum">
+			      <tab preview="BracesStyle-Enums.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <setting name="enumBraceStyle" type="braces" desc="Brace style for enumeration declarations"/>
+			      </tab>
+			  </node>
+			  <node name="Try/Catch">
+			      <tab preview="BracesStyle-TryCatch.cpp" 
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			           
+			         <setting name="tryCatchBraceStyle" type="braces" desc="Brace style for try-catch statements"/>
+			      </tab>
+			  </node>
+		   </topic>
+		
+		   <topic name="Insertion Of Braces/Parentheses">
+		
+		      <tab preview="BracesInsertion.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Insert braces { } at ...</label>
+		
+		         <setting name="insertBracesIntoForStatements" type="boolean" desc="For statements"/>
+		         <setting name="insertBracesIntoWhileStatements" type="boolean" desc="While statements"/>
+		         <setting name="insertBracesIntoDoWhileStatements" type="boolean" desc="Do-while statements"/>
+		         <setting name="insertBracesIntoIfElseStatements" type="boolean" desc="If-else statements"/>
+		
+		         <blankline/>
+		         <label>Insert parentheses ( ) at ...</label>
+		
+		         <setting name="insertParenthesesIntoConditions" type="boolean" desc="Conditions"/>
+		
+		      </tab>
+		
+		   </topic>
+
+
+		   <topic name="If-Else Statements">		
+		      <tab preview="IfElse.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of if-else statements</label>
+		
+		         <setting name="singleIfStatementInOneLine" type="boolean" desc="Single if statement in one line"/>
+		         <setting name="singleElseStatementInOneLine" type="boolean" desc="Single else statement in one line"/>
+		         <setting name="specialElseIfTreatment" type="boolean" desc="Treat else and if as one else/if statement"/>		
+		      </tab>		
+		   </topic>
+
+		
+		   <topic name="Empty Statements/Declarations">
+		      <tab preview="EmptyStatements.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of empty statements and declarations</label>
+		
+		         <setting name="emptyStatementsDeclarationsOnNewLine" type="boolean" desc="Put empty statements and declarations on new line"/>
+		      </tab>
+		   </topic>
+		   
+		   
+		   <topic name="White Spaces">
+
+             <node name="Parentheses">
+	         	<tab filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+	         		<setting name="combinePaddingParentheses" type="boolean" desc="Combine padding parentheses to prevent white spaces"/>
+	         	</tab>
+
+		        <node name="Constructors/Functions">
+			       <tab preview="Whitespaces-Parentheses-ConstructorsMethods.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+						<label>White spaces of parentheses ( ... )</label>
+		           		
+						<setting name="spaceBeforeMethodConstructorDeclarationParentheses" type="boolean" desc="Space before left parentheses of constructor and function declarations"/>
+						<setting name="paddingMethodConstructorDeclarationParentheses" type="boolean" desc="Padding parentheses of constructor and function declarations"/>
+						
+						<setting name="spaceBeforeMethodConstructorCallParentheses" type="boolean" desc="Space before left parentheses of constructor and function calls"/>
+						<setting name="paddingMethodConstructorCallParentheses" type="boolean" desc="Padding parentheses of constructor and function calls"/>
+						
+						<setting name="noPaddingOfEmptyParentheses" type="boolean" desc="No padding of empty parentheses"/>
+				   </tab>
+			 	</node>
+			 	<node name="Expressions"> 
+					<tab preview="Whitespaces-Parentheses-Expressions.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+						<label>White spaces of parentheses ( ... )</label>
+						<setting name="paddingExpressionParentheses" type="boolean"  desc="Padding expression parentheses"/>
+					</tab>
+				</node>
+				<node name="Statements">
+			        <tab preview="Whitespaces-Parentheses-Statements.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">				
+						 <label>White spaces of parentheses ( ... )</label>
+				         <setting name="spaceBeforeForParentheses" type="boolean" desc="Space before left parentheses of for statements"/>
+				         <setting name="paddingForParentheses" type="boolean" desc="Padding parentheses of for statements"/>
+	
+				         <setting name="spaceBeforeIfParentheses" type="boolean" desc="Space before left parentheses of if statements"/>
+				         <setting name="paddingIfParentheses" type="boolean" desc="Padding parentheses of if statements"/>
+	
+				         <setting name="spaceBeforeWhileParentheses" type="boolean" desc="Space before left parentheses of while statements"/>
+				         <setting name="paddingWhileParentheses" type="boolean" desc="Padding parentheses of while statements"/>
+	
+				         <setting name="spaceBeforeCatchParentheses" type="boolean" desc="Space before left parentheses of catch statements"/>
+				         <setting name="paddingCatchParentheses" type="boolean" desc="Padding parentheses of catch statements"/>
+	
+				         <setting name="spaceBeforeSwitchParentheses" type="boolean" desc="Space before left parentheses of switch statements"/>
+				         <setting name="paddingSwitchParentheses" type="boolean" desc="Padding parentheses of switch statements"/>
+	
+				         <setting name="spaceBeforeThrowParentheses" type="boolean" desc="Space before left parentheses of throw statement and declaration"/>
+				         <setting name="paddingThrowParentheses" type="boolean" desc="Padding parentheses of throw declarations"/>
+	
+				         <setting name="spaceBeforeReturnParentheses" type="boolean" desc="Space before left parentheses of return statement"/>
+					</tab>
+				</node>
+				<node name="Operators">
+			        <tab preview="Whitespaces-Parentheses-Operators.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+						 <label>White spaces of sizeof ( ... )</label>
+				         <setting name="spaceBeforeSizeOfParentheses" type="boolean" desc="Space before left parentheses of sizeof operators"/>
+				         <setting name="paddingSizeOfParentheses" type="boolean" desc="Padding parentheses of sizeof operators"/>				         
+			        </tab>	
+			    </node>
+			    <node name="Castings">			
+			        <tab preview="Whitespaces-Parentheses-Castings.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+						 <label>White spaces of parentheses ( ... )</label>
+				         <setting name="spaceAfterCastParentheses" type="boolean" desc="Space after right parentheses of castings"/>
+				         <setting name="paddingCastParentheses" type="boolean" desc="Padding parentheses of castings"/>
+			        </tab>
+			    </node>				
+			</node>
+
+			<node name="Brackets">							
+		       	<tab preview="Whitespaces-Brackets.cpp"
+				           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				    <label>White spaces of brackets [ ... ]</label>
+					<setting name="paddingBrackets" type="boolean" desc="Padding brackets"/>
+					<setting name="noPaddingOfEmptyBrackets" type="boolean" desc="No padding of empty brackets"/>
+					<setting name="spaceBeforeBrackets" type="boolean" desc="Space before brackets"/>
+					<setting name="spaceAfterBrackets" type="boolean" desc="Space after brackets"/>
+				</tab>
+			</node>
+			<node name="Braces">
+				<tab preview="Whitespaces-Braces.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+						<label>White spaces of braces  { ... }</label>
+					<setting name="paddingBracesOfInitializers" type="boolean" desc="Padding braces of initializers"/>
+					<setting name="noPaddingOfEmptyBracesInInitializers" type="boolean" desc="No padding of empty braces in initializers"/>
+				</tab>
+			</node>
+			<node name="Operators">
+				<tab name="Misc Operators" preview="Whitespaces-Misc-Operators.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			        <label>White spaces of operators</label>
+					<setting name="paddingAssignmentOperators" type="boolean" desc="Padding assignment operators  = += -= /= *= ..."/>
+					<setting name="paddingConditionalOperators" type="boolean" desc="Padding conditional operators  &amp;&amp; ||"/>
+					<setting name="paddingEqualityOperators" type="boolean" desc="Padding equality operators  == !="/>
+					<setting name="paddingRelationalOperators" type="boolean" desc="Padding relational operators  &lt; &gt; &lt;= =&gt;"/>
+					<setting name="paddingAdditiveOperators" type="boolean" desc="Padding additive operators  + -"/>
+					<setting name="paddingMultiplicativeOperators" type="boolean" desc="Padding multiplicative operators  * / %"/>
+					<setting name="paddingBitwiseOperators" type="boolean" desc="Padding bitwise operators  &amp; | ^"/>
+					<setting name="paddingShiftOperators" type="boolean" desc="Padding shift operators  &lt;&lt; &gt;&gt;"/>
+					<setting name="paddingIOOperators" type="boolean" desc="Padding input/output operators  &lt;&lt; &gt;&gt;"/>
+			         
+					<setting name="spaceBeforeBangs" type="boolean" desc="Space before bangs !"/>
+					<setting name="spaceAfterBangs" type="boolean" desc="Space after bangs !"/>
+					
+					<setting name="spaceBeforeBangsAfterAndOr" type="boolean" desc="Space before bangs ! appearing together with &amp;&amp; ||"/>
+					<setting name="spaceAfterBangsAfterAndOr" type="boolean" desc="Space after bangs ! appearing together with &amp;&amp; ||"/>
+					
+					<setting name="spaceBeforeTildes" type="boolean" desc="Space before tildes ~"/>
+					<setting name="spaceAfterTildes" type="boolean" desc="Space after tildes ~"/>
+				</tab>
+				<node name="Pointer Operators">
+					<tab preview="Whitespaces-Pointer-Operators.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+				        <label>White spaces of pointer operators</label>
+						<setting name="paddingPointerOperators" type="boolean" desc="Padding pointer operators  ->"/>
+	
+						<blankline/>
+						<setting name="spaceBeforePointerAmpersandsInTypes" type="boolean" desc="Space before reference operators &amp; in types"/>
+						<setting name="spaceAfterPointerAmpersandsInTypes" type="boolean" desc="Space after reference operators &amp; in types"/>
+						<setting name="spaceBeforePointerAmpersands" type="boolean" desc="Space before reference operators &amp; in names"/>
+						<setting name="spaceAfterPointerAmpersands" type="boolean" desc="Space after reference operators &amp; in names"/>
+	
+						<blankline/>
+						<setting name="spaceBeforePointerStarsInTypes" type="boolean" desc="Space before dereference operators * in types"/>
+						<setting name="spaceAfterPointerStarsInTypes" type="boolean" desc="Space after dereference operators * in types"/>
+						<setting name="spaceBeforePointerStars" type="boolean" desc="Space before dereference operators * in names"/>
+						<setting name="spaceAfterPointerStars" type="boolean" desc="Space after dereference operators * in names"/>
+						
+					</tab>
+				</node>
+			</node>
+			
+			<node name="Templates">				
+		        <tab preview="Whitespaces-Templates.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				        <label>White spaces of braces in template definitions &lt; ... &gt;</label>
+				    <setting name="spaceBeforeBracesOfTemplates" type="boolean" desc="Space before left braces"/>
+					<setting name="paddingBracesOfTemplates" type="boolean" desc="Padding of braces in template definitions"/>
+				</tab>
+			</node>
+
+			<node name="Commas"> 
+				<tab preview="Whitespaces-Commas.cpp"
+	           			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				        <label>White spaces of commas ,</label>
+		         	<setting name="spaceBeforeCommas" type="boolean" desc="Space before commas"/>
+		         	<setting name="spaceAfterCommas" type="boolean" desc="Space after commas"/>
+		      	</tab>
+		    </node>
+		
+			<node name="Ellipses"> 
+				<tab preview="Whitespaces-Ellipses.cpp"
+			      		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+				        <label>White spaces of ellipses ...</label>
+					<setting name="spaceBeforeEllipses" type="boolean" desc="Space before ellipses"/>
+				</tab>
+			</node>
+		
+			<node name="Semicolons">
+				<tab preview="Whitespaces-Semicolons.cpp"
+			           	filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			           	
+				        <label>White spaces of semicolons ;</label>
+					<setting name="spaceBeforeSemicolons" type="boolean" desc="Space before semicolons"/>
+					
+					<setting name="spaceBeforeForSemicolons" type="boolean" desc="Space before semicolons of for statements"/>
+					<setting name="spaceAfterForSemicolons" type="boolean" desc="Space after semicolons of for statements"/>
+					<setting name="noSpacesBetweenEmptyForSemicolons" type="boolean" desc="Do not insert spaces into empty for statements"/>
+				</tab>
+			</node>
+			<node name="Question Marks">
+				<tab preview="Whitespaces-QuestionMarks.cpp"
+	        			filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				        <label>White spaces of question marks ?</label>
+	       			<setting name="spaceBeforeTernaryHooks" type="boolean" desc="Space before question marks of ternary conditions"/>
+	       			<setting name="spaceAfterTernaryHooks" type="boolean" desc="Space after question marks of ternary conditions"/>
+	    		</tab>
+	    	</node>
+			<node name="Colons">
+				<tab preview="Whitespaces-Colons.cpp"
+						filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				        <label>White spaces of colons :</label>
+					<setting name="spaceBeforeClassBaseSpecifierColons" type="boolean" desc="Space before colons of base specifiers"/>
+					<setting name="spaceAfterClassBaseSpecifierColons" type="boolean" desc="Space after colons of base specifiers"/>
+
+					<setting name="spaceBeforeConstructorInitializerColons" type="boolean" desc="Space before colons of constructor initializers"/>
+					<setting name="spaceAfterConstructorInitializerColons" type="boolean" desc="Space after colons of constructor initializers"/>
+
+					<setting name="spaceBeforeTernaryColons" type="boolean" desc="Space before colons of ternary conditions"/>
+					<setting name="spaceAfterTernaryColons" type="boolean" desc="Space after colons of ternary conditions"/>
+					
+					<setting name="spaceBeforeLabelColons" type="boolean" desc="Space before colons of labels"/>
+					<setting name="spaceAfterLabelColons" type="boolean" desc="Space after colons of labels"/>
+			
+			      	<setting name="spaceBeforeCaseColons" desc="Space before colons in switch-case blocks" type="boolean"/>
+			      	
+					<setting name="spaceBeforeBitFieldColons" type="boolean" desc="Space before colons of bit fields"/>
+					<setting name="spaceAfterBitFieldColons" type="boolean" desc="Space after colons of bit fields"/>		      	
+				</tab>
+			</node>
+			<node name="Scopes">
+				<tab preview="Whitespaces-Scopes.cpp"
+				        		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				        <label>White spaces of scopes ::</label>
+					<setting name="spaceBeforeScopes" type="boolean" desc="Space before scopes"/>
+					<setting name="spaceAfterScopes" type="boolean" desc="Space after scopes"/>
+				</tab>
+			  </node>
+		   </topic>
+		   
+		   <topic name="Blank Lines">
+		
+		      <tab preview="BlankLines-Preserve.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter">
+		
+				 <label>Preserve blank lines from input source code</label>
+		         <setting name="keepBlankLines" type="inumber" desc="Keep blank lines up to"/>
+		      </tab>
+
+			  <node name="Comments">
+			      <tab preview="Comments-BlankLines.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Blank lines around block comments</label>
+			         <setting name="blankLinesBeforeBlockComments" type="number" desc="Blank lines before block comments"/>
+			         <setting name="blankLinesAfterBlockComments" type="number" desc="Blank lines after block comments"/>
+			
+						<blankline/>
+			         <label>Blank lines around single-line comments</label>
+			         <setting name="blankLinesBeforeSingleLineComments" type="number" desc="Blank lines before single-line comments"/>
+			         <setting name="blankLinesAfterSingleLineComments" type="number" desc="Blank lines after single-line comments"/>
+			
+						<blankline/>
+			         <label>Blank lines around end-of-line block comments</label>
+			         <setting name="blankLinesBeforeEndOfLineComments" type="number" desc="Blank lines before end-of-line comments"/>
+			         <setting name="blankLinesAfterEndOfLineComments" type="number" desc="Blank lines after end-of-line Comments"/>
+			      </tab>
+			      <node name="Commented Out Source Code">
+			         <tab preview="Comments-BlankLines.cpp"
+			              filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			            <label>Exception rule for commented out source code</label>
+			
+			            <setting name="doNotInsertBlankLinesBeforeFirstLineComments" type="boolean" 
+			                   desc="Do not insert blank lines before comments appearing\nin the first line of source code files"/>		         
+			        </tab>
+			  	 </node>		
+			  </node>
+
+			 <node name="Doxygen">
+			      <tab preview="Doxygen-BlankLines.cpp"
+			           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	             	  <label>Blank lines around Doxygen</label>
+	
+	             	  <setting name="blankLinesBeforeDoxygenComments" desc="Blank lines before Doxygen" type="number"/>
+	             	  <setting name="blankLinesAfterDoxygenComments" desc="Blank line after Doxygen" type="number"/>
+			      </tab>
+			 </node>
+			 
+			 <node name="Statements">		
+				<tab preview="BlankLines-Statements.cpp"
+		                 filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+					<label>Blank lines around statements containing blocks</label>
+		            <setting name="blankLinesBeforeStatementsContainingBlocks" type="number" desc="Blank lines before statements containing blocks"/>
+		            <setting name="blankLinesAfterStatementsContainingBlocks" type="number" desc="Blank lines after statements containing blocks"/>
+		
+					<blankline/>
+					<label>Blank lines between statements</label>
+		            <setting name="blankLinesBetweenDifferentStatements" type="number" desc="Insert blank lines between different statement types"/>
+		
+					<blankline/>
+					<label>Blank lines before branching statements</label>
+		            <setting name="blankLinesBeforeBreakStatements" desc="Blank lines before break statement" type="number"/>
+		            <setting name="blankLinesBeforeContinueStatements" desc="Blank lines before continue statement" type="number"/>
+		            <setting name="blankLinesBeforeReturnStatements" desc="Blank lines before return statement" type="number"/>
+		            <setting name="blankLinesBeforeThrowStatements" desc="Blank lines before throw statement" type="number"/>
+		            <setting name="blankLinesBeforeGotoStatements" desc="Blank lines before goto statement" type="number"/>
+				</tab>
+			</node>
+		    <node name="Switch-Case Blocks">
+				<tab preview="BlankLines-SwitchCase.cpp"
+		             	filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		           <label>Blank lines around switch-case blocks</label>
+		
+		           <setting name="blankLinesBeforeFirstCaseBlock" type="number" desc="Insert blank lines before first case block"/>
+		           <setting name="blankLinesBetweenCaseBlocks" type="number" desc="Insert blank lines between case blocks"/>
+				</tab>
+			</node>
+			<node name="Declarations">
+				<tab preview="BlankLines-Declarations.cpp"
+		              filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+					<label>Blank lines around local variable declarations</label>
+		            <setting name="blankLinesBeforeLocalVariables" type="number" desc="Blank lines before local variable declarations"/>
+		            <setting name="blankLinesAfterLocalVariables" type="number" desc="Blank lines after local variable declarations"/>
+		
+					<blankline/>
+					<label>Blank lines after ...</label>
+		            <setting name="blankLinesAfterFields" type="number" desc="Blank lines after field declarations"/>
+		            <setting name="blankLinesAfterClasses" type="number" desc="Blank lines after class/struct and union declarations"/>
+		            <setting name="blankLinesAfterConstructorsDestructors" type="number" desc="Blank lines after constructor and\ndestructor declarations"/>
+		            <setting name="blankLinesAfterMethods" type="number" desc="Blank lines after function declarations"/>
+		            <setting name="groupEmptyMethodsForBlankLines" type="boolean" desc="Group empty functions for blank line insertion" />
+  		            <setting name="blankLinesAfterEnumerations" type="number" desc="Blank lines after enum declarations"/>
+		            <setting name="blankLinesAfterMemberDeclarationGroups" type="number" desc="Blank lines after member declaration groups"/>
+			        <setting name="blankLinesAfterUsingDeclarations" type="number" desc="Blank lines after using declarations"/>
+			        <setting name="blankLinesAfterBlocksOfLinkageSpecifications" type="number" desc="Blank lines after blocks of linkage specifications"/>
+		        </tab>
+		    </node>
+		    <node name="Directives/Macros">  
+			   <tab preview="BlankLines-DirectivesMacros.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">		   
+	          		<label>Blank lines after ...</label>
+			        <setting name="blankLinesAfterMacroFunctions" type="number" desc="Blank lines after macro functions"/>
+			        <setting name="blankLinesAfterUsingDirectives" type="number" desc="Blank lines after using directives"/>
+					<blankline/>
+					<label>Blank lines around ...</label>
+
+			        <setting name="blankLinesBeforeIfDirectives" type="number" desc="Blank lines before #if, #ifdef, #ifndef directives"/>
+			        <setting name="blankLinesAfterIfDirectives" type="number" desc="Blank lines after #if, #ifdef, #ifndef directives"/>
+			        <setting name="blankLinesBeforeElseDirectives" type="number" desc="Blank lines before #else, #elif directives"/>
+			        <setting name="blankLinesAfterElseDirectives" type="number" desc="Blank lines after #else, #elif directives"/>
+			        <setting name="blankLinesBeforeEndifDirectives" type="number" desc="Blank lines before #endif directives"/>
+			        <setting name="blankLinesAfterEndifDirectives" type="number" desc="Blank lines after #endif directives"/>
+			        <setting name="blankLinesBeforeIncludeDirectives" type="number" desc="Blank lines before #include directives"/>
+			        <setting name="blankLinesAfterIncludeDirectives" type="number" desc="Blank lines after #include directives"/>
+			        <setting name="blankLinesBeforePragmaDirectives" type="number" desc="Blank lines before #pragma directives"/>
+			        <setting name="blankLinesAfterPragmaDirectives" type="number" desc="Blank lines after #pragma directives"/>
+			        <setting name="blankLinesBeforeWarningErrorDirectives" type="number" desc="Blank lines before #warning #error directives"/>
+			        <setting name="blankLinesAfterWarningErrorDirectives" type="number" desc="Blank lines after #warning #error directives"/>
+			        <setting name="blankLinesBeforeDefineDirectives" type="number" desc="Blank lines before #define, #undef directives"/>
+			        <setting name="blankLinesAfterDefineDirectives" type="number" desc="Blank lines after #define, #undef directives"/>
+			        <setting name="blankLinesBeforeLineDirectives" type="number" desc="Blank lines before #line directives"/>
+			        <setting name="blankLinesAfterLineDirectives" type="number" desc="Blank lines after #line directives"/>
+
+			        <setting name="blankLinesBeforeOtherDirectives" type="number" desc="Blank lines before other directives"/>
+			        <setting name="blankLinesAfterOtherDirectives" type="number" desc="Blank lines after other directives"/>
+			   </tab>
+			</node>
+			<node name="Metadata Definitions"> 
+			   <tab preview="BlankLines-Metadata.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">		   
+					<label>Blank lines around local metadata</label>
+		            <setting name="blankLinesBeforeMetadataDefinitions" type="number" desc="Blank lines before metadata definitions"/>
+		            <setting name="blankLinesAfterMetadataDefinitions" type="number" desc="Blank lines after metadata definitions"/>
+			   </tab>
+			</node>
+		   </topic>
+
+
+		   <topic name="Line Wrapping">
+		
+		      <tab preview="LineWrapping-General.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+				 <label>General line wrapping</label>
+		         <setting name="wrapLines" type="boolean" desc="Enable line wrapping to fit source code to maximal line length"/>
+		         <setting name="maxLineLength" type="number" inputtype="linewrapping" desc="Maximal line length"/>
+
+				 <setting name="lineWrappingPolicy" type="lineWrappingPolicy" desc="Line wrapping policy"/>
+		
+		         <setting name="wrapBecauseOfComments" type="boolean" desc="Wrap lines even if only comments exceed maximal line length"/>
+
+			 	 <blankline/>
+				 <label>Alternative indentation</label>
+		         <setting name="alternativeIndent" type="number" desc="Alternative indentation"/>
+		
+				 <blankline/>
+				 <label>Avoiding big gaps</label>
+		         <setting name="deepIndent" type="absoluteRelativeINumber" desc="Maximal gap size of indentations"/>
+		
+				 <blankline/>
+				 <label>Avoiding confusing indentation</label>
+		         <setting name="avoidConfusingIndentations" type="boolean" desc="Avoid confusing indentations"/>
+			  </tab>
+		
+			  <node name="Operators"> 
+		         <tab preview="LineWrapping-Policy.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				    <label>Wrapping policy of operators</label>
+		
+		            <setting name="wrapConditionalOperators" desc="Conditional operators: &amp;&amp; ||" type="bawrapping"/>
+		            <setting name="wrapComparisonOperators" desc="Comparison operators: &lt; &gt; == != ..." type="bawrapping"/>
+		            <setting name="wrapNumericalOperators" desc="Numerical operators: + - * / % &amp; | &lt;&lt; &gt;&gt; ..." type="bawrapping"/>
+		            <setting name="wrapIOOperators" desc="Input/Output operators: &lt;&lt; &gt;&gt;" type="bawrapping"/>
+		
+		            <setting name="allowWrappingAfterAssignments" type="boolean" desc="Allow wrapping after assignments ="/>
+				 </tab>
+		      </node>
+	      	 <node name="Variable/Field Declarations">  
+		        <tab preview="LineWrapping-Declarations-VariablesFields.cpp"
+	           		    filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+					<label>Wrap local variable and field declarations</label>
+		            <setting name="deepIndentForMultipleDeclarations" type="absoluteRelativeINumber" desc="Maximal gap size of indentations for multiple\nvariable and field declarations"/>
+		            <blankline/>
+      			        <setting name="wrapDeclarationInitializersToRightSide" type="boolean" desc="Wrap initializers of variable and field declarations to right side\n(in this case the 'maximal gap settings' will be ignored)"/>
+				 </tab>
+			 </node>
+	      	 <node name="Class Declarations">  
+		        <tab preview="LineWrapping-Declarations-Classes.cpp"
+	           		    filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+					<label>Wrap base specifiers of class declarations</label>
+					
+		         	<setting name="wrapColonsOfClassBaseSpecifiers" type="wrapping" desc="Wrap colons of base specifiers"/>
+		         	<setting name="indentWrappedColonsOfClassBaseSpecifiers" type="number" desc="Indentation of wrapped colons of base specifiers"/>
+
+		         	<setting name="wrapFirstClassBaseSpecifier" type="wrapping" desc="Wrap first base specifier"/>
+		         	<setting name="indentWrappedFirstClassBaseSpecifier" type="number" desc="Indentation of first wrapped base specifier"/>
+
+		         	<setting name="wrapClassBaseSpecifiers" type="wrapping" desc="Wrap all other base specifiers"/>
+				 </tab>
+			 </node>			 
+	         <node name="Constructor/Function Declarations">
+		        <tab preview="LineWrapping-Declarations-ConstructorsMethods.cpp"
+	           		   filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	
+				    <label>Wrap constructor and method declarations</label>
+
+				    <setting name="wrapAfterMethodDeclarationReturnTypes" type="wrapping" desc="Wrap after method declaration return types"/>
+
+		            <setting name="wrapBeforeLeftParenthesisOfMethodConstructorDeclarations" type="wrapping" desc="Wrap before left parentheses ("/>
+		            <setting name="indentWrappedLeftParenthesisOfMethodConstructorDeclarations" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		            <setting name="wrapFirstParameterOfMethodConstructorDeclarations" type="wrapping" desc="Wrap first parameter"/>
+		            <setting name="indentWrappedFirstParameterOfMethodConstructorDeclarations" type="number" desc="Indentation of first wrapped parameter"/>
+
+		            <setting name="wrapParametersOfMethodConstructorDeclarations" type="wrapping" desc="Wrap all other parameters"/>
+
+		            <setting name="wrapBeforeRightParenthesisOfMethodConstructorDeclarations" type="wrapping" desc="Wrap before right parentheses )"/>
+		            <setting name="indentWrappedRightParenthesisOfMethodConstructorDeclarations" type="number" desc="Indentation of wrapped right parentheses )"/>
+
+		            <setting name="avoidConfusingIndentationsForMethodConstructorDeclarations" type="boolean" desc="Avoid confusing indentations for\nmethods and constructors declarations"/>
+		         
+		            <setting name="wrapThrow" type="wrapping" desc="Wrap before throw"/>
+		            <setting name="indentWrappedThrow" type="number" desc="Indentation of wrapped throw"/>	
+		            <setting name="wrapThrowExceptions" type="wrapping" desc="Wrap throw exceptions"/>
+		         
+		            <blankline/>
+		            <label>Exception rules for wrapping constructor and method declarations</label>
+
+		            <setting name="doNotWrapEmptyVoidParameter" type="boolean" desc="Do not wrap empty void parameter"/>
+		            
+		            <blankline/>
+		            <label>Wrap constructor initializers</label>
+		            <setting name="wrapColonsOfConstructorInitializers" type="wrapping" desc="Wrap before colons of constructor initializers"/>
+		            <setting name="indentWrappedColonsOfConstructorInitializers" type="number" desc="Indentation of wrapped constructor initializer colons"/>	
+
+				    <setting name="wrapFirstConstructorInitializer" type="wrapping" desc="Wrap first constructor initializer"/>
+				    <setting name="indentWrappedFirstConstructorInitializer" type="number" desc="Indentation of wrapped first constructor initializer"/>
+				    <setting name="wrapConstructorInitializers" type="wrapping" desc="Wrap constructor initializers"/>
+				</tab>
+		    </node>
+		    <node name="Enum Declarations">
+			    <tab preview="LineWrapping-Declarations-Enums.cpp"
+	           	        filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+	           	      
+			 	    <label>Wrap enum constants</label>
+		            <setting name="wrapEnumElements" type="wrapping" desc="Wrap Enum constants"/>
+			  	    <blankline/>
+				    <label>Line up enum constants</label>
+	         	    <setting name="maxEnumElementsInOneLine" type="inumber" desc="Maximal number of enumeration constants\nlined up in one line"/>
+			    </tab>
+			</node>
+			<node name="Array Declarations">
+		        <tab preview="LineWrapping-LineUpElements.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				   <label>Line up array initializers of variables and fields</label>
+		           <setting name="maxArrayElementsInOneLine" type="inumber" desc="Maximal number of array initializer elements\nlined up in one line"/>
+		           
+		           <!--
+		           		FIXME 
+		           		Spezielle Sektion für multi dimensionale Array Deklarationen einführen
+		           		
+		           		<setting name="" type="boolean" desc="Use line up strategy only for the most " /> 
+		           	-->			           	
+				</tab>
+			</node>
+			
+			<node name="Direct Method Calls">
+		      	<tab preview="LineWrapping-MethodCalls.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				
+					<label>Wrap direct constructor calls and method calls</label>
+
+		         	<setting name="wrapBeforeLeftParenthesisOfMethodConstructorCalls" type="wrapping" desc="Wrap before left parentheses ("/>
+		         	<setting name="indentWrappedLeftParenthesisOfMethodConstructorCalls" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		         	<setting name="wrapFirstArgumentOfMethodConstructorCalls" type="wrapping" desc="Wrap first argument"/>
+		         	<setting name="indentWrappedFirstArgumentOfMethodConstructorCalls" type="number" desc="Indentation of first wrapped argument"/>
+
+		         	<setting name="wrapArgumentsOfMethodConstructorCalls" type="wrapping" desc="Wrap all other arguments"/>
+		         	<setting name="wrapBeforeRightParenthesisOfMethodConstructorCalls" type="wrapping" desc="Wrap right parentheses )"/>
+		   		 	<setting name="indentWrappedRightParenthesisOfMethodConstructorCalls" type="number" desc="Indentation of wrapped right parentheses )"/>
+		   		 </tab>
+		    </node>
+		    <node name="Nested Method Calls">
+		      	<tab preview="LineWrapping-MethodCalls.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+
+					<label>Wrap nested constructor calls and method calls</label>
+
+		         	<setting name="wrapBeforeLeftParenthesisOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap before left parentheses ("/>
+		         	<setting name="indentWrappedLeftParenthesisOfNestedMethodConstructorCalls" type="number" desc="Indentation of wrapped left parentheses ("/>
+
+		         	<setting name="wrapFirstArgumentOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap first argument"/>
+		         	<setting name="indentWrappedFirstArgumentOfNestedMethodConstructorCalls" type="number" desc="Indentation of first wrapped argument"/>
+
+		         	<setting name="wrapArgumentsOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap all other arguments"/>
+		         	<setting name="wrapBeforeRightParenthesisOfNestedMethodConstructorCalls" type="wrapping" desc="Wrap right parentheses )"/>
+		   		 	<setting name="indentWrappedRightParenthesisOfNestedMethodConstructorCalls" type="number" desc="Indentation of wrapped right parentheses )"/>
+		   		 </tab>
+		   	</node>
+		   	<node name="Chained Method Calls">
+		      	<tab preview="LineWrapping-MethodCalls.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">			           		
+					<label>Wrap chained constructor calls and method calls</label>
+	         		<setting name="wrapChainedMethodConstructorCalls" type="boolean" desc="Wrap chained constructor and method calls on demand"/>			   		 	
+		   		</tab>
+	     	</node>
+			 
+			 <node name="Qualifiers">
+		        <tab preview="LineWrapping-Qualifiers.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+ 	
+				   <label>Specify annotation qualifiers to wrap to a new line</label>
+		           <setting name="annotationQualifiersToWrap" type="packageListOfRegularExpressions" desc="List of annotation qualifiers to wrap"/>
+		           <setting name="alwaysWrapAnnotationQualifiersWithArguments" type="boolean" desc="Always wrap annotation qualifiers with arguments" />
+			    </tab>
+             </node>
+             <node name="Statements"> 
+		        <tab preview="LineWrapping-Statements.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+ 	
+ 				   <label>Wrap parentheses of statements</label>
+		           <setting name="allowWrappingAfterLeftParenthesesOfStatements" type="boolean" desc="Wrap after left parentheses ( on demand"/>
+			    </tab>
+			 </node>
+		   </topic>
+		   
+		   <topic name="Alignments">
+		      <tab>
+		         <label>General chunk separation</label>
+		         <setting name="separateChunksByComments" type="boolean" desc="Comments separate alignment chunks"/>
+		         <setting name="separateChunksByExceedingLines" type="boolean" desc="Exceeding lines separate alignment chunks" />
+
+		         <blankline/>
+		         <label>General alignment of operators in declarations</label>
+				 <setting name="alignAmpersandsPointersToTypes" type="boolean" desc="Align reference operators &amp; to types and not to names"/>
+				 <setting name="alignStarPointersToTypes" type="boolean" desc="Align dereference operators * to types and not to names"/>			         		
+
+	         	 <blankline/>
+	          </tab>
+	          <node name="Variable/Field Declarations">
+				  <tab preview="Alignment-Variables.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of variable/field declarations</label>
+			
+			         <setting name="alignDeclarations" type="boolean" desc="Align variable/field declarations"/>
+			         <setting name="alignExceedingDeclarations" type="boolean" desc="Align declarations exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of variable/field declarations</label>
+			
+			         <setting name="indentDeclarationsByTabs" type="boolean" desc="Indent variable/field declarations by tab stops"/>
+			
+			      </tab>
+			  </node>
+              <node name="Parameter Declarations">
+			      <tab preview="Alignment-Parameters.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of parameter declarations</label>
+			
+			         <setting name="alignParameterDeclarations" type="boolean" desc="Align parameter declarations"/>
+			         <setting name="alignExceedingParameterDeclarations" type="boolean" desc="Align parameter declarations exceeding max. line length"/>
+
+			         <blankline/>
+			         <label>Indentation of parameter declarations</label>
+			
+			         <setting name="indentParameterDeclarationsByTabs" type="boolean" desc="Indent parameter declarations by tab stops"/>
+			      </tab>
+			   </node>
+			   <node name="Assignments">
+			      <tab preview="Alignment-Variables.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of assignments</label>
+			
+			         <setting name="alignAssignments" type="boolean" desc="Align assignments"/>
+			         <setting name="alignExceedingAssignments" type="boolean" desc="Align assignments exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of assignments</label>
+			
+			         <setting name="indentAssignmentsByTabs" type="boolean" desc="Indent assignments by tab stops"/>
+			      </tab>
+			   </node>
+			   <node name="Bit Fields">
+	      		  <tab preview="Alignment-BitFields.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of bit fields</label>
+			
+			         <setting name="alignBitFields" type="boolean" desc="Align bit fields"/>
+			         <setting name="alignExceedingBitFields" type="boolean" desc="Align bit fields exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of bit fields</label>
+			
+			         <setting name="indentBitFieldsByTabs" type="boolean" desc="Indent bit fields by tab stops"/>
+			      </tab>
+			    </node>			      
+			    <node name="Trailing Comments">
+			      <tab preview="Alignment-Comments.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of trailing comments</label>
+			
+			         <setting name="alignComments" type="boolean" desc="Align trailing comments"/>
+			         <setting name="alignExceedingComments" type="boolean" desc="Align trailing comments exceeding max. line length"/>
+			
+			         <blankline/>
+			         <label>Indentation of trailing comments</label>
+			
+			         <setting name="minimumCommentIndent" type="number" desc="Minimum number of spaces to separate\ntrailing comments from code"/>
+			         <setting name="indentCommentsByTabs" type="boolean" desc="Indent trailing comments by tab stops"/>
+			      </tab>
+			    </node>
+			    <node name="Ternary Conditions">
+			      <tab preview="Alignment-Ternary.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Alignment of ternary conditions</label>
+			
+			         <setting name="alignFirstTernaryExpression" type="boolean" desc="Align first ternary expression to ternary condition"/>
+			         <setting name="alignTernaryExpressions" type="boolean" desc="Align second ternary expression to first one"/>
+			      </tab>
+			    </node>
+		   </topic>
+
+		   <topic name="Comments">
+		
+		      <tab preview="Comments.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Formatting of comments</label>
+		
+		         <setting name="formatBlockComments" type="boolean" desc="Format block comments"/>
+		         <setting name="formatSingleLineComments" type="boolean" desc="Format single-line comments"/>
+		         <setting name="formatEndOfLineComments" type="boolean" desc="Format end-of-line comments"/>
+		         <setting name="formatTrailingComments" type="boolean" desc="Format trailing comments"/>
+		
+		         <blankline/>
+		         <label>Deleting of comments</label>
+		
+		         <setting name="deleteBlockComments" type="boolean" desc="Delete block comments"/>
+		         <setting name="deleteSingleLineComments" type="boolean"  desc="Delete single-line comments"/>
+		         <setting name="deleteEndOfLineComments" type="boolean"  desc="Delete end-of-line comments"/>
+		         <setting name="deleteTrailingComments" type="boolean"  desc="Delete trailing comments"/>		         
+		      </tab>
+
+			  <node name="Commented Out Source Code">		
+			      <tab preview="Comments.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Exception rules for commented out source code</label>
+			
+			         <setting name="neverIndentAndFormatFirstColumnComments" type="boolean" desc="Never indent and format comments beginning in first column"/>
+			         <setting name="neverDeleteFirstColumnComments" type="boolean" desc="Never delete comments beginning in first column"/>
+			         <setting name="indentContentOfFirstColumnComments" type="boolean" desc="Indent comment out source code in first column comments"/>			
+			      </tab>
+			  </node>
+			  
+			  <node name="Generated Comments">		
+			      <tab preview="Comments.cpp"
+			           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Exception rules for generated comments</label>
+			
+					 <setting name="doNotFormatCommentsContainingKeys" type="string" desc="Do NOT format comments containing keys"/>
+			      </tab>
+			  </node>					  		
+		   </topic>
+
+		   <topic name="Doxygen">
+		   
+		      <tab preview="Doxygen-Misc.cpp">
+	             <label>Format Doxygen comments</label>
+	
+	             <setting name="formatDoxygenComments" type="boolean" desc="Format existing Doxygen comments"/>
+	
+	             <blankline/>
+ 	             <label>Delete Doxygen comments</label>
+	
+	             <setting name="deleteDoxygenComments" type="boolean" desc="Delete existing Doxygen comments"/>		         
+	             <blankline/>
+		      </tab>
+		   </topic>
+		   
+<!--		
+		   <topic name="JavaDocs">
+		   
+		      <tab name="Templates">
+		
+		         <label>Templates for Javadocs creation</label>
+		
+		         <blankline/>
+		
+		         <tab name="Classes" preview="JavaDocs-Classes.cpp"
+		           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create Javadocs for ...</label>
+		   
+		            <setting name="createPublicClassJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyClassJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedClassJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateClassJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		            <setting name="javaDocClass" type="text" desc="Template"/>
+		         </tab>
+		
+		         <tab name="Enums" preview="JavaDocs-Enums.cpp"
+				          filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicEnumJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyEnumJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedEnumJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateEnumJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		            <setting name="javaDocEnum" type="text" desc="Template"/>
+		         </tab>
+		
+		         <tab name="Fields" preview="JavaDocs-Fields.cpp"
+			           	filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			         <label>Create JavaDocs for ...</label>
+		   
+		            <setting name="createPublicFieldJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+		            <setting name="createFriendlyFieldJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+		            <setting name="createProtectedFieldJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+		            <setting name="createPrivateFieldJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+		
+			         <blankline/>
+		            <setting name="javaDocField" type="text" desc="Template"/>
+		         </tab>
+		
+		         <tab name="Constructors/Methods">
+		   
+			         <label>Exceptions in JavaDoc templates</label>
+			         <setting name="sortExceptionsInTemplates" type="boolean" desc="Sort exceptions in JavaDoc templates"/>
+			
+			         <blankline/>
+			         <label>Completion of existing JavaDocs</label>
+			
+			         <setting name="insertMissingJavaDocTags" type="boolean" desc="Insert missing tags in existing JavaDocs"/>
+			         <setting name="deleteObsoleteJavaDocTags" type="boolean" desc="Delete obsolete tags from existing JavaDocs"/>
+			
+			         <blankline/>
+		      
+			         <tab name="Constructors" preview="JavaDocs-Constructors.cpp"
+				           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+				         <label>Create JavaDocs for ...</label>
+			   
+			            <setting name="createPublicConstructorJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+			            <setting name="createFriendlyConstructorJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+			            <setting name="createProtectedConstructorJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+			            <setting name="createPrivateConstructorJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+			
+				         <blankline/>
+				         <label>Templates</label>
+			
+			            <setting name="javaDocConstructorTop" type="text" desc="Top template"/>
+			            <setting name="javaDocConstructorParamSeparator" type="text" desc="Parameter separator template"/>
+			            <setting name="javaDocConstructorParam" type="text" desc="Parameter template"/>
+			            <setting name="javaDocConstructorExceptionSeparator" type="text" desc="Exception separator template"/>
+			            <setting name="javaDocConstructorException" type="text" desc="Exception template"/>
+			            <setting name="javaDocConstructorBottom" type="text" desc="Bottom template"/>
+			         </tab>
+			
+			         <tab name="Methods" preview="JavaDocs-Methods.cpp"
+			           		filters="NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+				         <label>Create JavaDocs for ...</label>
+			   
+			            <setting name="createPublicMethodJavaDocs" type="boolean" desc="public" formatting="NO_NEW_ROW"/>
+			            <setting name="createFriendlyMethodJavaDocs" type="boolean" desc="friendly" formatting="NO_NEW_ROW"/>
+			            <setting name="createProtectedMethodJavaDocs" type="boolean" desc="protected" formatting="NO_NEW_ROW"/>
+			            <setting name="createPrivateMethodJavaDocs" type="boolean" desc="private" formatting="NO_NEW_ROW"/>
+			
+				         <blankline/>
+				         <label>Templates</label>
+			
+			            <setting name="javaDocMethodTop" type="text" desc="Top template"/>
+			            <setting name="javaDocMethodParamSeparator" type="text" desc="Parameter separator template"/>
+			            <setting name="javaDocMethodParam" type="text" desc="Parameter template"/>
+			            <setting name="javaDocMethodReturn" type="text" desc="Return Template"/>
+			            <setting name="javaDocMethodExceptionSeparator" type="text" desc="Exception separator template"/>
+			            <setting name="javaDocMethodException" type="text" desc="Exception template"/>
+			            <setting name="javaDocMethodBottom" type="text" desc="Bottom template"/>
+			         </tab>
+					</tab>
+		      </tab>
+		
+		      <tab name="Misc" preview="JavaDocs-Misc.cpp"
+		           filters="NoJavaDocsFilter, NoNotesFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+		         <label>Blank lines around existing javadocs\nand JavaDoc templates</label>
+		
+		         <setting name="blankLinesBeforeJavaDocComments" desc="Blank lines before JavaDocs" type="number"/>
+		         <setting name="blankLinesAfterJavaDocComments" desc="Blank line after JavaDocs" type="number"/>
+		
+		         <blankline/>
+		         <label>Format JavaDocs</label>
+		
+		         <setting name="formatJavaDocComments" type="boolean" desc="Format existing JavaDocs"/>
+		
+		         <blankline/>
+		         <label>Delete JavaDocs</label>
+		
+		         <setting name="deleteJavaDocComments" type="boolean" desc="Delete existing JavaDocs"/>
+		
+		      </tab>
+		
+		   </topic>
+-->		   
+		   
+
+<!--
+		   <topic name="Sorting">
+		
+		      <tab name="Sorter">
+		
+					<tab name="Type Declarations" preview="Sorting-TypeDeclarations.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+						<label>Sorting of type declarations</label>
+		
+		   	      <setting name="sortTypeDeclarations" type="boolean" desc="Sort type declarations"/>
+			         <setting name="insertSeparatorCommentsInTypeDeclarations" type="boolean" desc="Insert separator comments before type declarations"/>
+			         <setting name="insertSeparatorCommentsOnlyBetweenTypeDeclarations" type="boolean" desc="Insert separator comments only between type declarations"/>
+			
+						<blankline/>
+						<label>Sorting order of type declarations</label>
+			         <setting name="typeDeclarationsSorter" type="sorter" desc="Type declaration sorter tree"/>
+					</tab>
+					<tab name="Class/Enum Declarations" preview="Sorting-ClassInterfaceDeclarations.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+						<label>Sorting within class and enum declarations</label>
+		
+		   	      <setting name="sortClassInterfaceEnumDeclarations" type="boolean" desc="Sort within class and enum declarations"/>
+			         <setting name="insertSeparatorCommentsInClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments before declarations\nwithin class and enum declarations"/>
+			         <setting name="insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments only between declarations\nwithin class, interface and enum declarations"/>
+		 				<setting name="insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations" type="boolean" desc="Insert separator comments within nested class, interface\nand enum declarations"/>
+		
+						<blankline/>
+						<label>Sorting order within class and enum declarations</label>
+			         <setting name="classInterfaceEnumDeclarationsSorter" type="sorter" desc="Within type declaration sorter tree"/>
+					</tab>
+			      <tab name="Import Declarations" preview="Sorting-Imports.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+						<label>Sorting of import declarations</label>
+		
+			         <setting name="sortImportDeclarations" type="boolean" desc="Sort import declarations"/>
+			         <setting name="insertSeparatorCommentsInImportDeclarations" type="boolean" desc="Insert separator comments before import declarations"/>
+			         <setting name="insertSeparatorCommentsOnlyBetweenImportDeclarations" type="boolean" desc="Insert separator comments only between import declarations"/>
+		
+			      </tab>
+		      </tab>
+		
+		      <tab name="Separator Comments" preview="Sorting-SeparatorComments.cpp"
+		           		filters="NoJavaDocsFilter, NoNotesFilter, KeepNoBlankLinesFilter">
+		
+					<label>Insert separator comments before ...</label>
+		         
+		         <setting name="insertFieldsSeparator" type="boolean" desc="Fields" formatting="NO_NEW_ROW"/>
+		         <setting name="fieldsSeparator" type="string" desc=""/>
+		
+		         <setting name="insertEnumsSeparator" type="boolean" desc="Enums" formatting="NO_NEW_ROW"/>
+		         <setting name="enumsSeparator" type="string" desc=""/>
+
+		         <setting name="insertEnumConstantsSeparator" type="boolean" desc="Constant enums" formatting="NO_NEW_ROW"/>
+		         <setting name="enumConstantsSeparator" type="string" desc=""/>
+		
+		         <setting name="insertConstructorsSeparator" type="boolean" desc="Constructors" formatting="NO_NEW_ROW"/>
+		         <setting name="constructorsSeparator" type="string" desc=""/>
+		
+		         <setting name="insertMethodsSeparator" type="boolean" desc="Methods" formatting="NO_NEW_ROW"/>
+		         <setting name="methodsSeparator" type="string" desc=""/>
+		
+		         <setting name="insertClassesSeparator" type="boolean" desc="Classes" formatting="NO_NEW_ROW"/>
+		         <setting name="classesSeparator" type="string" desc=""/>
+		
+		         <setting name="insertNestedClassesSeparator" type="boolean" desc="Inner classes" formatting="NO_NEW_ROW"/>
+		         <setting name="nestedClassesSeparator" type="string" desc=""/>
+		
+		         <setting name="insertInterfacesSeparator" type="boolean" desc="Interfaces" formatting="NO_NEW_ROW"/>
+		         <setting name="interfacesSeparator" type="string" desc=""/>
+
+		         <setting name="insertNestedInterfacesSeparator" type="boolean" desc="Inner interfaces" formatting="NO_NEW_ROW"/>
+		         <setting name="nestedInterfacesSeparator" type="string" desc=""/>
+		
+		         <setting name="insertImportJDKSeparator" type="boolean" desc="JDK imports" formatting="NO_NEW_ROW"/>
+		         <setting name="importJDKSeparator" type="string" desc=""/>
+		
+		         <setting name="insertImportNonJDKSeparator" type="boolean" desc="Non-JDK imports" formatting="NO_NEW_ROW"/>
+		         <setting name="importNonJDKSeparator" type="string" desc=""/>
+		
+		         <blankline/>
+					<label>Fine grained separator comments for methods</label>
+		
+		         <setting name="insertGetMethodsSeparator" type="boolean" desc="Get methods" formatting="NO_NEW_ROW"/>
+		         <setting name="getMethodsSeparator" type="string" desc=""/>
+		
+		         <setting name="insertSetMethodsSeparator" type="boolean" desc="Set methods" formatting="NO_NEW_ROW"/>
+		         <setting name="setMethodsSeparator" type="string" desc=""/>
+		         
+		         <blankline/>
+		         <label>Separator comments fill up</label>
+		         <setting name="separatorCommentFillCharacters" type="string" desc="Characters to fill up\nseparator comments"/>
+		         <setting name="separatorCommentLineLength" type="number" desc="Maximal line length used\nto fill up separator comments"/>
+		      </tab>
+		
+		   </topic>
+-->
+
+		   <topic name="Header/Footer">
+		   		
+		      <node name="Header">
+			      <tab preview="HeaderFooter.cpp" 
+			      		filters="NoNotesFilter, NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+			
+			         <label>Detection of previous inserted headers</label>
+			
+			         <setting name="headerDetectionSmartMode" type="inumber" desc="Header detection smart mode"/>
+			         <setting name="headerDetectionIncludeKeys" type="string" desc="Detect headers containing keys"/>
+			         <setting name="headerDetectionExcludeKeys" type="string" desc="Detect headers NOT containing keys"/>
+			
+			         <blankline/>
+			         <label>Formatting of header</label>
+			
+			         <setting name="formatHeader" type="boolean" desc="Format detected headers"/>
+			
+					 <blankline/>
+					 <label>Blank lines around detected headers\nand header templates</label>
+			         <setting name="blankLinesBeforeHeader" type="number" desc="Blank lines before header"/>
+			         <setting name="blankLinesAfterHeader" type="nznumber" desc="Blank lines after header"/>
+			
+			         <blankline/>
+			         <label>Insertion of new header</label>
+			
+			         <setting name="headerInsertionMode" type="header" desc="Header insertion mode"/>
+			         <setting name="headerTemplate" type="text" desc="Header text template"/>
+			      </tab>
+			   </node>
+			   <node name="Footer">
+		          <tab preview="HeaderFooter.cpp" 
+		      		   filters="NoNotesFilter, NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			          <label>Detection of previous inserted footers</label>
+			
+			          <setting name="footerDetectionSmartMode" type="inumber" desc="Footer detection smart mode"/>
+			          <setting name="footerDetectionIncludeKeys" type="string" desc="Detect footers containing keys"/>
+		 	          <setting name="footerDetectionExcludeKeys" type="string" desc="Detect footers NOT containing keys"/>
+			
+			          <blankline/>
+			          <label>Formatting of footer</label>
+			
+			          <setting name="formatFooter" type="boolean" desc="Format detected footers"/>
+			
+				      <blankline/>
+					  <label>Blank lines around detected footers\nand footer templates</label>
+			          <setting name="blankLinesBeforeFooter" type="nznumber" desc="Blank lines before footer"/>
+			          <setting name="blankLinesAfterFooter" type="number" desc="Blank lines after footer"/>
+			
+			          <blankline/>
+			          <label>Insertion of new footer</label>
+			
+			          <setting name="footerInsertionMode" type="footer" desc="Footer insertion mode"/>
+			          <setting name="footerTemplate" type="text" desc="Footer text template"/>
+			      </tab>
+			   </node>		
+		   	   <node name="Code Convention Note">
+		      	  <tab preview="CodeConvention.cpp" 
+		      		  filters="NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			         <label>Java code convention note</label>
+			
+			         <setting name="conventionNote" type="string" desc="Note"/>
+			
+			         <setting name="conventionNotePosition" type="position" desc="Position"/>
+			         <setting name="blankLinesToSeparateConventionNote" type="number" desc="Separated by blank lines"/>
+			
+			      </tab>
+			  </node>
+			  <node name="Jindent Note">
+		         <tab  preview="CodeConvention.cpp" 
+		      		  filters="NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">
+		
+			         <label>Jindent note</label>
+			
+			         <setting name="jindentNotePosition" type="position" desc="Position"/>
+			         <setting name="blankLinesToSeparateJindentNote" type="number" desc="Separated by blank lines"/>
+		      	</tab>
+		      </node>
+		   </topic>	
+
+			<topic name="Code Analyzers Support">
+			   <tab preview="CodeAnalyzerSupport-Misc.cpp"
+			           filters="NoJavaDocsFilter, NoSortingFilter, KeepNoBlankLinesFilter">		
+			        <label>Empty statements in loops</label>   
+		         	<setting name="leaveExtraSpaceAfterEmptyLoops" type="boolean" desc="Leave extra space after empty loops"/>
+			   </tab>
+		    </topic>
+		    
+
+		
+		   <constraint src="conventionNotePosition" rule="disable">
+		      blankLinesToSeparateConventionNote, conventionNote
+		   </constraint>
+		
+		   <constraint src="jindentNotePosition" rule="disable">
+		      blankLinesToSeparateJindentNote
+		   </constraint>
+		
+		   <constraint src="headerInsertionMode" rule="disable">
+		      headerTemplate
+		   </constraint>
+		
+		   <constraint src="footerInsertionMode" rule="disable">
+		      footerTemplate
+		   </constraint>
+		
+		   <constraint src="insertBracesIntoIfElseStatements" rule="disable">
+		      singleIfStatementInOneLine, singleElseStatementInOneLine
+		   </constraint>
+		
+		   <constraint src="alignDeclarations" rule="enable">
+		      alignExceedingDeclarations
+		   </constraint>
+		   <constraint src="alignComments" rule="enable">
+		      alignExceedingComments
+		   </constraint>
+		   <constraint src="alignAssignments" rule="enable">
+		      alignExceedingAssignments
+		   </constraint>
+		   <constraint src="alignParameterDeclarations" rule="enable">
+		      alignExceedingParameterDeclarations,
+              alignAmpersandsPointersToTypes,
+              alignStarPointersToTypes		      
+		   </constraint>
+		   <constraint src="alignBitFields" rule="enable">
+		      alignExceedingBitFields
+		   </constraint>
+		   
+<!--				
+		   <constraint src="deleteJavaDocComments" rule="disable">
+		      formatJavaDocComments
+		   </constraint>
+-->		
+
+		   <constraint src="formatBlockComments,
+		                    formatSingleLineComments,
+		                    formatEndOfLineComments,
+		                    formatTrailingComments" rule="enable">
+		         doNotFormatCommentsContainingKeys
+			</constraint>
+
+		   <constraint src="neverIndentAndFormatFirstColumnComments" rule="enable">
+			   indentContentOfFirstColumnComments,
+			   neverDeleteFirstColumnComments
+			</constraint>
+			
+		   <constraint src="wrapLines" rule="enable">
+				maxLineLength,
+				lineWrappingPolicy,
+				wrapBecauseOfComments,
+				deepIndent,
+				avoidConfusingIndentations,
+				alternativeIndent,
+				wrapConditionalOperators,
+				wrapComparisonOperators,
+				wrapNumericalOperators,
+				wrapIOOperators,
+				allowWrappingAfterAssignments,
+				allowWrappingAfterLeftParenthesesOfStatements,
+				deepIndentForMultipleDeclarations,
+				wrapDeclarationInitializersToRightSide,
+				wrapFirstParameterOfMethodConstructorDeclarations,
+				wrapParametersOfMethodConstructorDeclarations,
+				wrapBeforeRightParenthesisOfMethodConstructorDeclarations,
+				avoidConfusingIndentationsForMethodConstructorDeclarations,
+				maxArrayElementsInOneLine,
+				wrapEnumElements,
+				maxEnumElementsInOneLine,
+				wrapChainedMethodConstructorCalls,
+				wrapFirstArgumentOfMethodConstructorCalls,
+				wrapArgumentsOfMethodConstructorCalls,
+				wrapBeforeRightParenthesisOfMethodConstructorCalls,
+				wrapFirstArgumentOfNestedMethodConstructorCalls,
+				wrapArgumentsOfNestedMethodConstructorCalls,
+				wrapBeforeRightParenthesisOfNestedMethodConstructorCalls,				
+				wrapAfterMethodDeclarationReturnTypes,
+				wrapBeforeLeftParenthesisOfMethodConstructorDeclarations,
+				indentWrappedLeftParenthesisOfMethodConstructorDeclarations,
+				indentWrappedFirstParameterOfMethodConstructorDeclarations,
+				indentWrappedRightParenthesisOfMethodConstructorDeclarations,
+				wrapBeforeLeftParenthesisOfMethodConstructorCalls,
+				indentWrappedLeftParenthesisOfMethodConstructorCalls,
+				indentWrappedFirstArgumentOfMethodConstructorCalls,
+				indentWrappedRightParenthesisOfMethodConstructorCalls,
+				wrapBeforeLeftParenthesisOfNestedMethodConstructorCalls,
+				indentWrappedLeftParenthesisOfNestedMethodConstructorCalls,
+				indentWrappedFirstArgumentOfNestedMethodConstructorCalls,
+				indentWrappedRightParenthesisOfNestedMethodConstructorCalls,
+				wrapThrow,
+				wrapThrowExceptions,
+				indentWrappedThrow,
+				doNotWrapEmptyVoidParameter
+			</constraint>
+			
+		   <constraint src="lineWrappingPolicy" rule="disable">
+				deepIndent,
+				avoidConfusingIndentations,
+				wrapDeclarationInitializersToRightSide
+			</constraint>
+			
+<!--		
+		   <constraint src="sortTypeDeclarations" rule="enable">
+		      insertSeparatorCommentsInTypeDeclarations,
+				insertSeparatorCommentsOnlyBetweenTypeDeclarations,
+		      typeDeclarationsSorter
+		   </constraint>
+
+		   <constraint src="insertSeparatorCommentsInTypeDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenTypeDeclarations
+		   </constraint>
+
+		   <constraint src="sortClassInterfaceEnumDeclarations" rule="enable">
+		      insertSeparatorCommentsInClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations,
+		      classInterfaceEnumDeclarationsSorter
+		   </constraint>
+		
+		   <constraint src="insertSeparatorCommentsInClassInterfaceEnumDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenClassInterfaceEnumDeclarations,
+				insertSeparatorCommentsInNestedClassInterfaceEnumDeclarations
+		   </constraint>
+		
+		   <constraint src="sortImportDeclarations" rule="enable">
+		      insertSeparatorCommentsInImportDeclarations,
+				insertSeparatorCommentsOnlyBetweenImportDeclarations,
+		      importDeclarationsSorter
+		   </constraint>
+		
+		   <constraint src="insertSeparatorCommentsInImportDeclarations" rule="enable">
+				insertSeparatorCommentsOnlyBetweenImportDeclarations
+		   </constraint>
+		
+		   <constraint src="
+					createPublicConstructorJavaDocs,
+					createPrivateConstructorJavaDocs,
+					createProtectedConstructorJavaDocs,
+					createFriendlyConstructorJavaDocs,
+					createPublicMethodJavaDocs,
+					createPrivateMethodJavaDocs,
+					createProtectedMethodJavaDocs,
+					createFriendlyMethodJavaDocs" 
+				rule="enable" concatenation="or">
+				sortExceptionsInTemplates,
+				insertMissingJavaDocTags,
+				deleteObsoleteJavaDocTags
+		   </constraint>
+		
+		   <constraint src="
+					createPublicConstructorJavaDocs,
+					createPrivateConstructorJavaDocs,
+					createProtectedConstructorJavaDocs,
+					createFriendlyConstructorJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocConstructorTop,
+				javaDocConstructorParam,
+				javaDocConstructorParamSeparator,
+				javaDocConstructorException,
+				javaDocConstructorExceptionSeparator,
+				javaDocConstructorBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicMethodJavaDocs,
+					createPrivateMethodJavaDocs,
+					createProtectedMethodJavaDocs,
+					createFriendlyMethodJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocMethodTop,
+				javaDocMethodParam,
+				javaDocMethodParamSeparator,
+				javaDocMethodReturn,
+				javaDocMethodException,
+				javaDocMethodExceptionSeparator,
+				javaDocMethodBottom
+		   </constraint>
+		
+		   <constraint src="
+					createPublicClassJavaDocs,
+					createPrivateClassJavaDocs,
+					createProtectedClassJavaDocs,
+					createFriendlyClassJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocClass
+		   </constraint>
+		
+		   <constraint src="
+					createPublicEnumJavaDocs,
+					createPrivateEnumJavaDocs,
+					createProtectedEnumJavaDocs,
+					createFriendlyEnumJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocEnum
+		   </constraint>
+		
+		   <constraint src="
+					createPublicFieldJavaDocs,
+					createPrivateFieldJavaDocs,
+					createProtectedFieldJavaDocs,
+					createFriendlyFieldJavaDocs"
+				rule="enable" concatenation="or">
+				javaDocField
+		   </constraint>
+-->		
+		   <constraint src="
+					paddingMethodConstructorDeclarationParentheses,
+					paddingMethodConstructorCallParentheses"
+				rule="enable" concatenation="or">
+				noPaddingOfEmptyParentheses
+		   </constraint>
+		
+		   <constraint src="
+					paddingMethodConstructorDeclarationParentheses,
+					paddingMethodConstructorCallParentheses,
+					paddingExpressionParentheses,
+					paddingForParentheses,
+					paddingIfParentheses,
+					paddingWhileParentheses,
+					paddingCatchParentheses,
+					paddingSwitchParentheses,
+					paddingThrowParentheses,
+					paddingCastParentheses"
+				rule="enable" concatenation="or">
+				combinePaddingParentheses
+		   </constraint>
+
+		   <constraint src="
+		   		spaceBeforeForSemicolons, 
+		   		spaceAfterForSemicolons" 
+		   	rule="enable" concatenation="or">
+				noSpacesBetweenEmptyForSemicolons
+			</constraint>
+			
+		   <constraint src="paddingBrackets" rule="enable">
+		      noPaddingOfEmptyBrackets
+		   </constraint>
+		
+		   <constraint src="paddingBracesOfInitializers" rule="enable">
+		      noPaddingOfEmptyBracesInInitializers
+		   </constraint>
+		   
+		   
+		   <constraint src="wrapParametersOfMethodConstructorDeclarations"
+					   rule="disabled">
+				alignParameterDeclarations,
+				alignExceedingParameterDeclarations,
+				indentParameterDeclarationsByTabs
+			</constraint>
+		   
+		
+<!--		
+		   <constraint src="insertFieldsSeparator" rule="enable">
+				fieldsSeparator
+		   </constraint>
+				
+		   <constraint src="insertEnumsSeparator" rule="enable">
+				enumsSeparator
+		   </constraint>
+		
+		   <constraint src="insertEnumConstantsSeparator" rule="enable">
+				enumConstantsSeparator
+		   </constraint>
+		
+		   <constraint src="insertConstructorsSeparator" rule="enable">
+				constructorsSeparator
+		   </constraint>
+		
+		   <constraint src="insertMethodsSeparator" rule="enable">
+				methodsSeparator,
+				insertGetMethodsSeparator,
+				getMethodsSeparator,
+				insertSetMethodsSeparator,
+				setMethodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertGetMethodsSeparator" rule="enable">
+				getMethodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertSetMethodsSeparator" rule="enable">
+				setMethodsSeparator
+		   </constraint>
+		
+		   <constraint src="insertClassesSeparator" rule="enable">
+				classesSeparator
+		   </constraint>
+		
+		   <constraint src="insertNestedClassesSeparator" rule="enable">
+				nestedClassesSeparator
+		   </constraint>
+		
+		   <constraint src="insertInterfacesSeparator" rule="enable">
+				interfacesSeparator
+		   </constraint>
+
+		   <constraint src="insertNestedInterfacesSeparator" rule="enable">
+				nestedInterfacesSeparator
+		   </constraint>
+
+		   <constraint src="insertImportJDKSeparator" rule="enable">
+				importJDKSeparator
+		   </constraint>
+
+		   <constraint src="insertImportNonJDKSeparator" rule="enable">
+				importNonJDKSeparator
+		   </constraint>
+
+		   <constraint src="
+		   		sortTypeDeclarations, 
+		         sortClassInterfaceEnumDeclarations,
+		   		sortImportDeclarations" rule="enable" concatenation="or">
+				insertFieldsSeparator,
+				fieldsSeparator,
+				insertEnumsSeparator,
+				enumsSeparator,
+				insertEnumConstantsSeparator,
+				enumConstantsSeparator,
+				insertConstructorsSeparator,
+				constructorsSeparator,
+				insertMethodsSeparator,
+				methodsSeparator,
+				insertGetMethodsSeparator,
+				getMethodsSeparator,
+				insertSetMethodsSeparator,
+				setMethodsSeparator,
+				insertClassesSeparator,
+				classesSeparator,
+				insertNestedClassesSeparator,
+				nestedClassesSeparator,
+				insertInterfacesSeparator,
+				interfacesSeparator,
+				insertNestedInterfacesSeparator,
+				nestedInterfacesSeparator,
+				insertImportJDKSeparator,
+				importJDKSeparator,
+				insertImportNonJDKSeparator,
+				importNonJDKSeparator
+		   </constraint>
+-->		  
+		</node>		
+		
+	</node>
+</customizerdata>
